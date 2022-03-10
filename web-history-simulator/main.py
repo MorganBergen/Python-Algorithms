@@ -17,28 +17,11 @@ def main():
 	print()
 	
 	try:
-		list.remove(0)
-		print()
-	except RuntimeError as foo:
-		print(foo)
-		
-	except IndexError as bar:
-		print(bar)
+		list.set_entry(4, "NEW ENTRY")
+	except IndexError as mee:
+		print(mee)
 	
 	print_list(list)
-	
-	list.clear()
-	
-	print()
-	print_list(list)
-	
-	try:
-		list.remove(100)
-	except IndexError as p:
-		print(p)
-	except RuntimeError as e:
-		print(e)
-	
 	
 def print_list(original):
 	if original.is_empty():

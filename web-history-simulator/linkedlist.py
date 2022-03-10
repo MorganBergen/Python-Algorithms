@@ -94,41 +94,34 @@ class LinkedList:
 			
 		else:
 			raise IndexError(f"IndexError here: index {index} is out of range.")
+
+	
+	
 	
 	def clear(self):
 		self._front = None
 		self._back = None
 	
 	
+	def set_entry(self, index, entry):
+		
+		if index >= self.get_length():
+			raise IndexError(f"IndexError: cannot set_entry, {index} > {self.get_length()-1}")
+		
+		elif index < 0:
+			raise IndexError(f"IndexError cannot set_entry, {index} < 0")
+			
+		elif index == self.get_length() - 1:
+			self._back.data = entry
+		
+		elif index == 0:
+			self._front.data = entry
+			
+		else:
+			target = self.get_node_at(index)
+			target.data = entry
+			
+			
 	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			
+			
