@@ -1,9 +1,12 @@
 
+from linkedlist import LinkedList
+
 def main():
-        print("lab04")
+	list = LinkedList()
+	print(list.get_length())
 
 if __name__ == "__main__":
-        main()
+	main()
 
 
 '''
