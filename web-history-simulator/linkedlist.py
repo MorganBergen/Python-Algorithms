@@ -11,21 +11,42 @@ class LinkedList:
 	def get_length(self):
 		return(self._length)
 		
+	
+#	index 5, length 6,
+	
 	def get_node_at(self, index):
-		if self.valid_index(index):
+		if index >= self.get_length():
+			raise IndexError(f"IndexError: cannot get_node_at, {index} > {self.get_length()-1}")
+		elif index < 0:
+			raise IndexError(f"IndexError: cannot gert_node_at, {index} < 0")
+		else:
 			jumper = self._front
 			if index == 0:
-				return (jumper)
-			elif (index == self.get_length() - 1):
-				back_copy = self._back
-				return(back_copy)
+				return jumper
+			elif index == self.get_length() - 1:
+				back = self._back
+				return back
 			else:
-				for i in range(index):
+				for i in range (index):
 					jumper = jumper.next
-				return(jumper)
-		else:
-			raise IndexError("IndexError: cannot get_node_at, at an invalid index")
+				return jumper
 			
+#
+#	def get_node_at(self, index):
+#		if self.valid_index(index):
+#			jumper = self._front
+#			if index == 0:
+#				return (jumper)
+#			elif (index == self.get_length() - 1):
+#				back_copy = self._back
+#				return(back_copy)
+#			else:
+#				for i in range(index):
+#					jumper = jumper.next
+#				return(jumper)
+#		else:
+#			raise IndexError("IndexError: cannot get_node_at, at an invalid index")
+#
 		
 	def get_entry(self, index):
 		try:
