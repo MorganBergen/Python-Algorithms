@@ -76,6 +76,7 @@ class LinkedList:
 			
 			if self.is_empty():
 				raise RuntimeError("RuntimeError: cannot remove on an empty list")
+				
 			else:
 				if (index == 0):
 					self._front = self._front.next
@@ -92,11 +93,11 @@ class LinkedList:
 				self._length = self._length - 1
 			
 		else:
-			raise IndexError(f"IndexError: index {index} is out of range.")
+			raise IndexError(f"IndexError here: index {index} is out of range.")
 	
-	
-	
-	
+	def clear(self):
+		self._front = None
+		self._back = None
 	
 	
 	
