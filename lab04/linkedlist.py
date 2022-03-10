@@ -7,24 +7,20 @@ class LinkedList:
 		self._front = None
 		self._back = None
 		self._length = 0
-		
-	def length(self):
-		jumper = self._front
-		self._length = 0
-		while jumper != None:
-			jumper = jumper.next
-			self._length = self._length + 1
-		return(self._length)
 	
-	'''
-	Insert the entry at the index. Valid indices range from 0 to length inclusively.
-	Inserting at index = 0 inserts at the front.
-	Inserting at entry index=length adds to the back.
-	Each insert increases the length by 1.
-	'''
+	def get_length(self):
+		return(self._length)
+		
+	def get_node_at(self, index):
+		jumper = self._front
+		
+		for i in range(index):
+			jumper = jumper.next
+		
+		return(jumper)
+			
 	def insert(self, index, entry):
-		valid = (index >= 0) and (index <= self._length)
-		if valid:
+		if self.valid_index(index):
 			new_node = Node(entry)
 			if index == 0:
 				self._front = new_node
@@ -32,12 +28,21 @@ class LinkedList:
 			elif (index == self._length):
 				self._back.next = new_node
 				self._back = new_node
-			
 			else:
-				print()
+				before = get_node_at(index - 1)
+				after = before.next
+				before.next = new_node
+				new_node.next = after
 				
-			
-			
+			self._length = self._length + 1
 		else:
 			raise IndexError(f"IndexError: index {index} is out of range.")
-		
+	
+	def valid_index(self, index):
+		return (index >= 0 and index <= self._length)
+
+
+
+
+
+
