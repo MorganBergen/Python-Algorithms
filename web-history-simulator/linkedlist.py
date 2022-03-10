@@ -13,11 +13,12 @@ class LinkedList:
 		
 	def get_node_at(self, index):
 		jumper = self._front
-		
 		for i in range(index):
 			jumper = jumper.next
-		
 		return(jumper)
+		
+	def get_entry(self, index):
+		return (self.get_node_at(index).data)
 			
 	def is_empty(self):
 		return (self._front == None)
@@ -57,6 +58,17 @@ class LinkedList:
 		return ((index >= 0) and (index <= self._length))
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 

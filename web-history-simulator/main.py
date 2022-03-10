@@ -3,22 +3,26 @@ from linkedlist import LinkedList
 
 def main():
 	list = LinkedList()
-	print(f"length == {list.get_length()}")
 	
 	try:
 		list.insert(0, "http://google.com")
-	except IndexError as e:
-		print(e)
-		
-	print(f"{list._front.data} -> ")
-	print(f"length == {list.get_length()}")
-
-	try:
 		list.insert(1, "https://reddit.com")
+		list.insert(2, "http://facebook.com")
+		list.insert(3, "http://myspace.com")
 	except IndexError as e:
 		print(e)
 		
-	print(f"{list._front.data} -> {list._back.data}")
+	print_list(list)
+	
+	
+	
+def print_list(original):
+	for i in range(original.get_length()):
+		print(f"{i} -> ", end="")
+	print()
+	for i in range(original.get_length()):
+		print(f"{original.get_entry(i)} -> ", end="")
+	
 	
 if __name__ == "__main__":
 	main()
