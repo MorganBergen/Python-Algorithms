@@ -15,11 +15,8 @@ class LinkedList:
 		return (self._front == None)
 	
 	def get_node_at(self, index):
-		if index >= self.get_length():
-			raise IndexError(f"IndexError: cannot get_node_at, {index} > {self.get_length()-1}")
-		elif index < 0:
-			raise IndexError(f"IndexError: cannot gert_node_at, {index} < 0")
-		else:
+	
+		if (index >= 0) and (index <= self.get_length()):
 			jumper = self._front
 			if index == 0:
 				return jumper
@@ -30,6 +27,9 @@ class LinkedList:
 				for i in range (index):
 					jumper = jumper.next
 				return jumper
+		
+		else:
+			raise IndexError("Index Error")
 		
 	def get_entry(self, index):
 		return (self.get_node_at(index).data)

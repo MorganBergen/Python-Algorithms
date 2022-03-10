@@ -17,10 +17,15 @@ def main():
 	print()
 	
 	try:
-		list.set_entry(0, "NEW ENTRY")
+		list.set_entry(1, "ººººººººº")
+		
 	except IndexError as mee:
 		print("\n", mee, "\n")
 	
+	print_list(list)
+	
+	
+	list.remove(5)
 	print_list(list)
 	print()
 	
@@ -31,7 +36,7 @@ def print_list(original):
 	else:
 		for i in range(original.get_length()):
 			print(f"{i} -> ", end="")
-		print()
+		print("\n")
 		for i in range(original.get_length()):
 			print(f"{original.get_entry(i)} -> ", end="")
 	
