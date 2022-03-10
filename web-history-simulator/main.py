@@ -17,11 +17,13 @@ def main():
 	print()
 	
 	try:
-		list.set_entry(4, "NEW ENTRY")
+		list.set_entry(0, "NEW ENTRY")
 	except IndexError as mee:
-		print(mee)
+		print("\n", mee, "\n")
 	
 	print_list(list)
+	print()
+	
 	
 def print_list(original):
 	if original.is_empty():
