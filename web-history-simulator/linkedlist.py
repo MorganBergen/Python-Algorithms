@@ -91,7 +91,6 @@ class LinkedList:
 		else:
 			raise IndexError(f"IndexError here: index {index} is out of range.")
 			
-	
 	def set_entry(self, index, entry):
 		
 		if index >= self.get_length():
@@ -109,8 +108,4 @@ class LinkedList:
 		else:
 			target = self.get_node_at(index)
 			target.data = entry
-			
-			
-	
-			
 			
