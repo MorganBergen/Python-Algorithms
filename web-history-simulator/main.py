@@ -3,6 +3,7 @@ from linkedlist import LinkedList
 
 def main():
 	list = LinkedList()
+	print()
 	
 	try:
 		list.insert(0, "http://google.com")
@@ -13,7 +14,16 @@ def main():
 		print(e)
 		
 	print_list(list)
+	print()
 	
+	try:
+		list.remove(2)
+		print()
+	except RuntimeError as e:
+		print(e)
+	print()
+	
+	print_list(list)
 	
 	
 def print_list(original):
