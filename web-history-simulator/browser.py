@@ -1,14 +1,12 @@
 
-
 from linkedlist import LinkedList
 
 class Browser:
 	
 	def __init__(self, file):
-		self.web_history = LinkedList() #self.web_history_history rename after youre done
+		self.web_history = LinkedList()
 		self.current = 0
 		self.file = file
-	
 	
 	def navigate_to(self, url):
 		if self.web_history.is_empty():
@@ -47,9 +45,7 @@ class Browser:
 		print("Newest")
 	
 	def fileIO(self):
-		
 		in_file = open(self.file)
-		
 		for line in in_file:
 			command = line.split()
 			if command[0] == "NAVIGATE":
@@ -63,5 +59,4 @@ class Browser:
 			
 			elif command[0] == "FORWARD":
 				self.forward()
-	
 		in_file.close()
