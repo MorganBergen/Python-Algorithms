@@ -5,17 +5,52 @@ from linkedlist import LinkedList
 class Browser:
 	
 	def __init__(self, file):
-		self.web_history = LinkedList()
+		self.web = LinkedList() #self.web_history rename after youre done
+		self.current = 0
 		self.file = file
-		self.current = -1
 		
-	def navigate_to(self, command, url):
 		
-	def back(self, command):
+	def navigate_to(self, url):
+		if self.web.is_empty():
+			self.web.insert(0, url)
+			self.current = 0
 		
-	def forward(self, command):
+		elif (self.web.get_length() - 1) == self.current:
+			self.web.insert(self.web.get_length(), url)
+			self.current = self.web.get_length() - 1
+		# length = 6, current = 2
+		# remove index 3, 4, 5
+		# position = 3
+		# remove(3)
+		# remove (4)
+		# remove(5)
+		else:
+			position = self.current + 1
+			for position in range(self.web.get_length()):
+				self.web.remove(position)
+		# current = 2
+		# current = 2 + 1
+		# insert (3, url)
+			self.current = self.current + 1
+			self.web.insert(self.current, url)
+		self.history()
+			
+	def back(self):
+	def forward(self):
+	def history(self):
+		print("Oldest")
+		print("===========")
+		for i in range self.web.get_length():
+			if i == self.current:
+				print(f"{i} {self.web.get_entry(i)} <== current {self.current}")
+			else:
+				print(f"{i} {self.web.get_entry(i)}")
+		print("===========")
+		print("Newest")
 		
-	def print(self, command):
+	def tester(self):
+		self.web.navigate
+	
 	
 	
 	def fileIO(self):
