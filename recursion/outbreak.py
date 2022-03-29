@@ -4,9 +4,9 @@
 @date		March 28 2022
 @brief		Exercise 2:  Outbreak Returns
 
-Flu season is upon us and the number of people getting sick is growing.
+			Flu season is upon us and the number of people getting sick is growing.
 
-On day 1, there was only 6 people had the flu
+			On day 1, there was only 6 people had the flu
 On day 2, it jumped to 20.
 On day 3, there were 75
 
@@ -52,17 +52,6 @@ def outbreak(days):
 
 main()
 
-
-
-
-'''
-
-Performed base file system operations from the Linux Command Line Enviroment when implementing programs.
-Derived and employed basic algoritms from given problems
-Demonstrated basic programming concepts and constructs such as for/while/do-while loops, primative data types i.e. long, short, int, double, strings, char, arrays, pointers, variables, function scope, general debugging techniques, structures, classes, compliation and makefile techniques.
-Basic functionalities of git
-
-'''
 
 
 
