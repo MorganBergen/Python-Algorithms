@@ -13,14 +13,15 @@ On day 3, there were 75
 Every day since, the number of people who have the flu is equal to the last 3 days combined
 You will make a program that will ask the user for what day they want a count of people with the flu for. Then display the amount. You must use recursion to solve the calculation of infected for a given day. Assume the user will input a valid day.
 
+d = days
 day	people
 1 = 6
 2 = 20
 3 = 75
 4 = 75 		+ 20	  + 6
 4 = (4 - 1) + (4 - 2) + (4 - 3)
-x = (x - 3) + (x - 2) + (x - 1)
-
+d = (d - 1) + (d - 2) + (d - 3)
+recursive case
 
 '''
  
@@ -37,15 +38,16 @@ def main():
 	
 	
 def outbreak(days):
-	if days == 0:
+	if days == 0: 	#base_case_0
 		return (0)
-	elif days == 1:
+	elif days == 1: #base_case_1
 		return (6)
-	elif days == 2:
+	elif days == 2: #base_case_2
 		return (20)
-	elif days == 3:
+	elif days == 3: #base_case_3
 		return (75)
 	else:
+		# recursive_case(recursive solution)
 		return outbreak(days - 1) + outbreak(days - 2) + outbreak(days - 3)
 
 main()
