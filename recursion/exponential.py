@@ -16,7 +16,6 @@ def main():
 	base = input("Enter a base: ")
 	power = input("Enter a power: ")
 	while valid == False:
-	
 		try:
 			base = int(base)
 			valid = True
