@@ -1,0 +1,68 @@
+lab06 backtracking blob
+- map characters
+- input file
+
+
+
+map characters
+S	streets
+P	path
+#	building
+@	sewers
+
+
+input file
+<numRow> <numCols>
+<Blob startRow> <Block startCol>
+# # S P
+S P S P
+# # # #
+
+list = [[#, #, S, P], [S, P, S, P], [#, #, #, #]]
+sewer_list [[]]
+ 
+rules
+b s => ✓
+b p => ✓
+b # => x
+b @ => ✓
+
+changes the character to capital b
+possible directions
+→
+←
+↑
+↓
+
+
+# # S P		# # B B
+# # P #		# # B #
+S S S #
+# S # #
+ 
+ 
+pseudo code for traverse method
+
+r l u d
+def traverse(map, row, col):
+	
+	if row and col are valid
+	traverse(map, row, col) (up)
+	traverse(map, row, col) (right)
+	traverse(map, row, col) (down)
+	traverse(map, row, col) (left)
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
