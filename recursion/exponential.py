@@ -7,7 +7,6 @@
 			rec_func
 			base case/terminating case is if power is 0
 			recursive case is
-			
 '''
 
 def main():
