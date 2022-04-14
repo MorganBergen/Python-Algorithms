@@ -11,8 +11,14 @@ def main():
 
 
 def fileIO(file):
-    in_file = open(file)
+    fo = open(file, 'w')
+    print("name of file is ", fo.name)
 
+    fo.read(100)
+
+    fo.close()
+    print("closed ", fo.closed)
+    
 
 
 main()
