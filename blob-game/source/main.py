@@ -1,29 +1,17 @@
 '''
-@file
-@author
-@date
-@brief
+@file       main.py
+@author     Morgan Bergen
+@date       April 14 2022
+@brief      the executive main which calls upon the input.txt file
 '''
-
-from re import S
-from matplotlib import lines
 
 def main():
-    file_name = input("Enter file name: ")
-    file(file_name)
+    input("enter file name: ")
 
-def file(name):
-    fo = open(name, "")
+
+def fileIO(file):
+    in_file = open(file)
+
+
 
 main()
-
-
-'''
-lines = list()
-
-    with open(name, mode="r") as f:
-        lines f.readlines()
-
-    for line in lines:
-        print(lines)
-'''˝˝
