@@ -1,4 +1,4 @@
-# Python-Data-Structures
+# Python Data Structures
 
 Data Structure Programs in Python
 
