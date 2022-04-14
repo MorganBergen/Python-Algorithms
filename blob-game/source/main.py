@@ -6,7 +6,8 @@
 '''
 
 def main():
-    input("enter file name: ")
+    f_name = input("enter file name: ")
+    fileIO(f_name)
 
 
 def fileIO(file):
