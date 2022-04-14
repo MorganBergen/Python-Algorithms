@@ -6,36 +6,38 @@
 '''
 
 def main():
-	f_name = input("enter file name: ")
-	fileIO(f_name)
 
+	run = False
+	while run == False:
+		file = input("file name: ")
+		run = fileIO(file)
+		
 def fileIO(file):
-	
-	run = True
-	while run:
-		try:
-			fo = open(file, 'r')
-		except FileNotFoundError as e:
-			print(e)
-		finally:
-			run = False
-			print("name of file is ", fo.name)
-			dimensions = fo.readline().split()
-			start_dimensions = fo.readline().split()
-			numRows = dimensions[0]
-			numCols = dimensions[1]
-			startRow = start_dimensions[0]
-			startCol = start_dimensions[1]
-			map = fo.read().splitlines()
-			print(f"startRow = {startRow}")
-			print(f"startCol = {startCol}")
-			print(f"numRows = {numRows}")
-			print(f"numCols = {numCols}")
-			print(map)
-			fo.close()
-			print("closed ", fo.closed)
+
+	try:
+		stream = open(file, 'r')
+	except FileNotFoundError("error: file not found, please try again"):
+		print(e)
+		return False
 	else:
-		print("we have hit our else statement")
+		dimen = stream.readline().split()
+		start = stream.readline().split()
+		num_rows = int(dimen[0])
+		num_cols = int(dimen[1])
+		if num_rows < 1 or num_cols < 1:
+			print("invalid")
+			return False
+		print("valid")
+		return True
 
+	
+	
+'''
+✓ invalid file if the file does not exit
+if numRows are less than 1
+if numCols are less than 1
+if start position is not within range
+'''
 
-main()
+if __name__ == "__main__":
+	main()
