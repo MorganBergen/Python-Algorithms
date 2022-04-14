@@ -1,7 +1,5 @@
 # Python Data Structures
 
-Data Structure Programs in Python
-
 Learn along side with me! [Here](https://morganbergen.notion.site/morganbergen/python-f43b4fe1e363455c8aabc99f9c400ee6)
 
 The programs within this repo are built to demonstrate:
