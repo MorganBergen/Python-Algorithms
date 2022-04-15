@@ -60,6 +60,8 @@ class Map:
 					print(f"{map[i][j]}", end="")
 				print()
 				
+			print("two dimensional list")
+				
 				
 				
 				
