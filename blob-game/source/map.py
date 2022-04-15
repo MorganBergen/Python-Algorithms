@@ -42,7 +42,6 @@ class Map:
 			self.start_row = int(start[0])
 			self.start_col = int(start[1])
 			
-			
 			if self.num_rows < 1 or self.num_cols < 1:
 				print("error: invalid map dimensions")
 				return False
@@ -62,15 +61,3 @@ class Map:
 			for j in range(len(self.map[i])):
 				print(f"{self.map[i][j]}", end="")
 			print()
-
-
-
-
-
-
-
-
-
-
-
-

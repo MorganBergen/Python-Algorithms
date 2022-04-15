@@ -13,8 +13,5 @@ def main():
 	obj = Blob()
 	obj.traverse()
 
-
-
 if __name__ == "__main__":
 	main()
-	

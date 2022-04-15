@@ -20,21 +20,12 @@ class Blob:
 		else:
 			print(x)
 			return self.change(x-1)
-
+		
 	def traverse(self):
 		for i in range(self.r):
-			if i == self.r:
-				for j in range(self.c):
-					if j == self.c:
-						print(f"{self.map[self.r][self.c]}", end="")
-					else:
-						print(f"{self.map[i][j]}", end="")
-			else:
-				for j in range(self.c):
-					print(f"{self.map[i][j]}", end="")
+			for j in range(self.c):
+				print(f"{self.map[i][j]}", end="")
 			print()
-	
-		
 
 
 
