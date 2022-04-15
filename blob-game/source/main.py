@@ -9,16 +9,13 @@ from map import Map
 from blob import Blob
 
 def main():
-
-	exec = Map()
-	exec.run()
-	exec.printMap()
-
+	
 	obj = Blob()
 	print(obj.name)
 	
-	
-	
+	obj.destory(4)
+
+
 
 if __name__ == "__main__":
 	main()

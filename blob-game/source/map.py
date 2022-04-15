@@ -3,11 +3,11 @@
 @author	Morgan Bergen
 @date 	April 14 2022
 @brief	the map class which handle initial file io
-		fileIO
-		will allocate memory into member variables from the input file fed in by the user
-		edge cases:
-		- if file doesn't exist, then  fileIO will catch an exception if the file does not exit and terminate the program
-		- if numRows are less than 1, if numCols are less than 1, and or if start position is not within range then generate an error message and terminate the program
+  fileIO
+  will allocate memory into member variables from the input file fed in by the user
+  edge cases:
+  - if file doesn't exist, then  fileIO will catch an exception if the file does not exit and terminate the program
+  - if numRows are less than 1, if numCols are less than 1, and or if start position is not within range then generate an error message and terminate the program
 '''
 
 class Map:
@@ -25,7 +25,7 @@ class Map:
 		while run == False:
 			self.file = input("file name: ")
 			run = self.fileIO()
-			
+	
 	def fileIO(self):
 		try:
 			stream = open(self.file, 'r')
@@ -49,11 +49,11 @@ class Map:
 			elif self.start_row > self.num_rows or self.start_col > self.num_cols:
 				print("error: start position is not within range")
 				return False
-			
+		
 		stream.close()
 		return True
-		
-		
+	
+	
 	def printMap(self):
 		
 		print(f"{self.num_rows} {self.num_cols}")
@@ -63,15 +63,15 @@ class Map:
 			for j in range(len(self.map[i])):
 				print(f"{self.map[i][j]}", end="")
 			print()
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
+
+
+
+
+
