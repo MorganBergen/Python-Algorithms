@@ -20,11 +20,11 @@ class Map:
 		self.start_col = 0
 		self.map = []
 	
-	def run(self):
-		run = False
-		while run == False:
+	def allocate(self):
+		allocate = False
+		while allocate == False:
 			self.file = input("file name: ")
-			run = self.fileIO()
+			allocate = self.fileIO()
 	
 	def fileIO(self):
 		try:
@@ -52,7 +52,6 @@ class Map:
 		
 		stream.close()
 		return True
-	
 	
 	def printMap(self):
 		

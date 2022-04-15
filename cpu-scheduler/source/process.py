@@ -4,6 +4,7 @@
 @date		March 4 2022
 @brief		This is the process class
 			a process contains a call stack, which is a stack of function names, a process is in charge of managing its call stack by either making additional calls (adding to the call stack) or having a function return (removing from the call stack)
+			for example:
 			START <process name>
 			e.g. START itunes
 			e.g. START firefox
@@ -19,18 +20,16 @@ from stack import Stack
 
 class Process:
 	
+	'''
+	@pre		a "START" command must be read in from the input.txt file
+	@post		the Stack data structure is initialized
+				a node with the name "main" is added to the top of the stack
+	@param		name
+	@raises		None
+	@returns	None
+	'''
 	def __init__(self, name):
 		self.stack = Stack()
 		self.name = name
 		self.stack.push("main")
 		
-	def call_adding(self, data):
-		self.stack.push(data)
-		message = f"{self.name} calls {self.stack.top.data}"
-		return(message)
-	
-	def call_removing(self):
-		try:
-			self.stack.pop()
-		except RuntimeError or AttributeError as e:
-			print(e)

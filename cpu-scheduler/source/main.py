@@ -10,6 +10,13 @@
 
 from cpu_scheduler import Cpu
 
+'''
+	@pre		user must input a valid existent file name.
+	@post		the Cpu object is initialized and conructed and the file from the user is read in by Cpu()'s member method fileIO
+	@param		None
+	@raises		None
+	@returns	None
+	'''
 def main():
 	file_name = input("Enter the name of the input file: ")
 	exec = Cpu()

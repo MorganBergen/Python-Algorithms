@@ -16,12 +16,33 @@ from node import Node
 
 class Stack:
 	
+	'''
+	@pre		a stack constructor must be called
+	@post		self.top is initialized to none
+	@param		None
+	@raises		None
+	@returns	None
+	'''
 	def __init__(self):
 		self.top = None
 	
+	'''
+	@pre		a stack must exist
+	@post		None
+	@param		None
+	@raises		None
+	@returns	a boolean stating whether the there is something at the top of the stack or not
+	'''
 	def is_empty(self):
 		return self.top == None
 	
+	'''
+	@pre		a stack must exits
+	@post		a new node is added at the top of the stack
+	@param		data
+	@raises		none
+	@returns	none
+	'''
 	def push(self, data):
 		node = Node(data)
 		if self.is_empty():
@@ -30,15 +51,42 @@ class Stack:
 			node.next = self.top
 			self.top = node
 	
+	'''
+	@pre		a stack must exist
+	@post		None, the peek method will simply reveal the data value at the top of the stack, if the stack is not empty
+	@param		None
+	@raises		RuntimeError
+	@returns	self.top.data
+	'''
 	def peek(self):
 		if self.is_empty():
 			raise RuntimeError('Stack Empty')
 		else:
 			return self.top.data
 	
+	'''
+	@pre		a stack must exist
+	@post		a node is removed from the top of the stack
+	@param		None
+	@raises		RuntimeError
+	@returns	self.top
+	'''
 	def pop(self):
 		if self.is_empty():
 			raise RuntimeError('Stack Empty')
 		else:
 			self.top = self.top.next
 			return(self.top)
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
