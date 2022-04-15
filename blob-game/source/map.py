@@ -8,7 +8,6 @@
 		edge cases:
 		- if file doesn't exist, then  fileIO will catch an exception if the file does not exit and terminate the program
 		- if numRows are less than 1, if numCols are less than 1, and or if start position is not within range then generate an error message and terminate the program
-		
 '''
 
 class Map:
@@ -20,7 +19,6 @@ class Map:
 		self.start_row = 0
 		self.start_col = 0
 		self.map = []
-		print(f"constructor has been called {self.file}")
 	
 	def run(self):
 		run = False
@@ -37,16 +35,13 @@ class Map:
 		else:
 			dim = stream.readline().split()
 			start = stream.readline().split()
-			map = stream.read().splitlines()
+			self.map = stream.read().splitlines()
 			
 			self.num_rows = int(dim[0])
 			self.num_cols = int(dim[1])
 			self.start_row = int(start[0])
 			self.start_col = int(start[1])
 			
-			print(f"{self.num_rows} {self.num_cols}")
-			print(f"{self.start_row} {self.start_col}")
-			print(f"{map}\n{type(map)}")
 			
 			if self.num_rows < 1 or self.num_cols < 1:
 				print("error: invalid map dimensions")
@@ -54,36 +49,29 @@ class Map:
 			elif self.start_row > self.num_rows or self.start_col > self.num_cols:
 				print("error: start position is not within range")
 				return False
-				
-			for i in range(len(map)):
-				for j in range(len(map[i])):
-					print(f"{map[i][j]}", end="")
-				print()
-				
-			print("two dimensional list")
-				
-				
-				
-				
-				
-				
-				
-		
 			
 		stream.close()
 		return True
 		
 		
+	def printMap(self):
 		
+		print(f"{self.num_rows} {self.num_cols}")
+		print(f"{self.start_row} {self.start_col}")
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
+		for i in range(len(self.map)):
+			for j in range(len(self.map[i])):
+				print(f"{self.map[i][j]}", end="")
+			print()
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
