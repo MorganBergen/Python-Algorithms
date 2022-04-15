@@ -1,3 +1,15 @@
+'''
+@file 	map.py
+@author	Morgan Bergen
+@date 	April 14 2022
+@brief	the map class which handle initial file io
+		fileIO
+		will allocate memory into member variables from the input file fed in by the user
+		edge cases:
+		- if file doesn't exist, then  fileIO will catch an exception if the file does not exit and terminate the program
+		- if numRows are less than 1, if numCols are less than 1, and or if start position is not within range then generate an error message and terminate the program
+		
+'''
 
 class Map:
 	
@@ -27,12 +39,12 @@ class Map:
 			start = stream.readline().split()
 			map = stream.read().splitlines()
 			
-			self.num_rows = dim[0]
-			self.num_cols = dim[1]
-			self.start_row = start[0]
-			self.start_col = start[1]
+			self.num_rows = int(dim[0])
+			self.num_cols = int(dim[1])
+			self.start_row = int(start[0])
+			self.start_col = int(start[1])
 			
-			print(f"{self.num_row} {self.num_col}")
+			print(f"{self.num_rows} {self.num_cols}")
 			print(f"{self.start_row} {self.start_col}")
 			print(f"{map}\n{type(map)}")
 			
@@ -42,5 +54,34 @@ class Map:
 			elif self.start_row > self.num_rows or self.start_col > self.num_cols:
 				print("error: start position is not within range")
 				return False
+				
+			for i in range(len(map)):
+				for j in range(len(map[i])):
+					print(f"{map[i][j]}", end="")
+				print()
+				
+				
+				
+				
+				
+				
+				
+		
 			
-			
+		stream.close()
+		return True
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
