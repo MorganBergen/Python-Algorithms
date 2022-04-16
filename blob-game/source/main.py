@@ -17,6 +17,8 @@ def main():
 	map.prinMap()
 	
 	'''
+	we must be able to catch runtimeerrors or file errors that generate a loop within the main and not for the Map class.  
+	'''
 	
 
 if __name__ == "__main__":
