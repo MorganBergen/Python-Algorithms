@@ -12,6 +12,12 @@ def main():
 	
 	obj = Blob()
 	obj.traverse()
+	
+	map_obj = Map()
+	map.prinMap()
+	
+	'''
+	
 
 if __name__ == "__main__":
 	main()
