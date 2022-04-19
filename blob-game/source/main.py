@@ -11,9 +11,12 @@ from blob import Blob
 def main():
 	exec = Blob()
 	print()
-	exec.print()
 	exec.indexes()
-	exec.move()
+	exec.start()
+	
+	exec.print()
+	
+	exec.move(0, 2)
 	
 	exec.print()
 

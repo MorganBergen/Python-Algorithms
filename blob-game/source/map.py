@@ -22,6 +22,7 @@ class Map:
 		self.start_col = 0
 		self.map = []
 	
+#	self.file = input("file name: ")
 	def allocate(self):
 		stop_running = False
 		while stop_running == False:
@@ -40,9 +41,7 @@ class Map:
 			start = stream.readline().split()
 			
 			self.map = list(stream.read().splitlines())
-			
-			
-			
+		
 			self.num_rows = int(dim[0])
 			self.num_cols = int(dim[1])
 			self.start_row = int(start[0])
@@ -61,14 +60,24 @@ class Map:
 		stream.close()
 		return True
 	
+	# raises index error
 	def	get_element(self, row, col):
 		row = int(row)
 		col = int(col)
-		return self.map[row][col]
+		print(row)
+		print(col)
+		if row > self.num_rows or row < 0:
+			raise IndexError
+		elif col < self.num_cols or col < 0:
+			raise IndexError
+		else:
+			return self.map[row][col]
 	
 	def set_element(self, row, col, element):
 		row = int(row)
 		col = int(col)
+	
+
 		self.map[row][col] = element
 		
 			
