@@ -10,6 +10,10 @@ from blob import Blob
 
 def main():
 	exec = Blob()
+	print()
+	exec.print()
+	exec.indexes()
+	exec.move()
 	exec.print()
 
 if __name__ == "__main__":

@@ -21,10 +21,11 @@ class Map:
 		self.map = []
 	
 	def allocate(self):
-		allocate = False
-		while allocate == False:
-			self.file = input("file name: ")
-			allocate = self.fileIO()
+		stop_running = False
+		while stop_running == False:
+#			self.file = input("file name: ")
+			self.file = "input.txt"
+			stop_running = self.fileIO()
 	
 	def fileIO(self):
 		try:
@@ -53,11 +54,38 @@ class Map:
 		return True
 	
 	def	get_element(self, row, col):
-		return map[row][col]
+		row = int(row)
+		col = int(col)
+		return self.map[row][col]
 	
 	def set_element(self, row, col, element):
-		map[row][col] = element
+#		row = int(row)
+#		col = int(col)
+#
+#		print(self.map[row][col])
+#		row_temp = self.map[row]
+#		print(len(row_temp))
+#		print(f"row length = {len(row_temp)}")
+#		print(f"row = {row_temp}")
+#		self.map
+		temp = self.map[row]
+		print(temp)
+		temp.pop(col)
+		print(temp)
+		self.map.insert(row, self.map[row])
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
 
 
