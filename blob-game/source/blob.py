@@ -33,7 +33,7 @@ class Blob:
 			return False
 		
 	def move(self):
-		self.city.set_element(0, 0, "BBBB")
+		self.city.set_element(self.city.start_row, self.city.start_col, "XXX")
 		
 
 

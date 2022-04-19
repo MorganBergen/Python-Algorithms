@@ -14,6 +14,7 @@ def main():
 	exec.print()
 	exec.indexes()
 	exec.move()
+	
 	exec.print()
 
 if __name__ == "__main__":

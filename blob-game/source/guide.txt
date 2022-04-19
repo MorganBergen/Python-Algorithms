@@ -1,0 +1,5 @@
+s.replace(old, new [, count])
+Returns a copy of string s with all occurrences of substring old 
+replaced by new. If count is passed, the first count oc- currences are 
+replaced. This works like a combination of x=s.split(old) and 
+new.join(x).
