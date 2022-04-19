@@ -10,6 +10,7 @@ class Blob:
 		for i in range(self.city.num_rows):
 			for j in range(self.city.num_cols):
 				print(f" {self.city.get_element(i, j)}  ", end="")
+				
 			print()
 		print()
 	

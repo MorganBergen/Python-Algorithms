@@ -67,86 +67,10 @@ class Map:
 		return self.map[row][col]
 	
 	def set_element(self, row, col, element):
-	
-		print(f"row = {row}")
-		print(f"col = {col}")
-
+		row = int(row)
+		col = int(col)
 		self.map[row][col] = element
 		
 			
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			
 	
-	
-#		row = int(row)
-#		col = int(col)
-#
-#		print(self.map[row][col])
-#		row_temp = self.map[row]
-#		print(len(row_temp))
-#		print(f"row length = {len(row_temp)}")
-#		print(f"row = {row_temp}")
-#		self.map
-#		S.replace(old, new [, count])
-
-#		temp = temp.replace(temp.find("", 0, 0), element, 0)
-'''
-
-for i in range(self.num_rows):
-			if i == self.start_row:
-				for j in range(self.num_cols):
-					
-					if j == self.start_col:
-						
-						print(f" {holder[i][j]} ", end="")
-						
-			else:
-				print()
-		temp = self.map[row]
-		
-		
-		
-		print(f"temp before modification {temp}")
-		
-		temp[0] = "x"
-		temp.insert
-		
-		print(f"temp AFTER modification {temp}")
-		
-		self.map.insert(row, temp)
-		
-'''
-		
-		
-		
-		
-#	for l in list:
-#		while 'N' in l:
-#			l[l.index('N')]=0
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		
-		
-		
-		
-
