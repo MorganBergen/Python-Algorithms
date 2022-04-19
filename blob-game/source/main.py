@@ -9,17 +9,8 @@ from map import Map
 from blob import Blob
 
 def main():
-	
-	obj = Blob()
-	obj.traverse()
-	
-	map_obj = Map()
-	map.prinMap()
-	
-	'''
-	we must be able to catch runtimeerrors or file errors that generate a loop within the main and not for the Map class.  
-	'''
-	
+	exec = Blob()
+	exec.print()
 
 if __name__ == "__main__":
 	main()

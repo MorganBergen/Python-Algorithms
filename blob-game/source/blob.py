@@ -3,32 +3,44 @@ from map import Map
 class Blob:
 	
 	def __init__(self):
-		map = Map()
-		map.allocate()
+		self.city = Map()
+		self.city.allocate()
 		
-		# storage
-		self.r = map.num_rows
-		self.c = map.num_cols
-		self.sr = map.start_row
-		self.sc = map.start_col
-		self.map = map.map
+	def print(self):
+		for i in range(self.city.num_rows):
+			for j in range(self.city.num_cols):
+				print(f"city.")
+			
 	
-	def change(self, x):
-		if x == 0:
-			print(x)
-			return 0
+#	def print(self):
+#		print(slecity)
+#		for i in range(city.map.num_rows):
+#			for j in range(city.map.num_cols):
+#				print(f"{city[i][j]}", end="")
+#			print()
+#	def print(self):
+#		print("\nmap")
+#		for i in range(self.r):
+#			for j in range(self.c):
+#				if i == self.sr and j == self.sc:
+#					print(f"B", end="")
+#				else:
+#					print(f"{self.map[i][j]}", end="")
+#			print()
+	
+	def is_valid_move(self, row, col):
+		if self.map[row][col] == "S":
+			return True
+		elif self.map[row][col] == "P":
+			return True
+		elif self.map[row][col] == "@":
+			return True
+		elif self.map[row][col] == "#":
+			return False
 		else:
-			print(x)
-			return self.change(x-1)
+			return False
 		
-	def traverse(self):
-		for i in range(self.r):
-			for j in range(self.c):
-				print(f"{self.map[i][j]}", end="")
-			print()
-
-
-
+#	def move(self, row, col):
 
 
 
