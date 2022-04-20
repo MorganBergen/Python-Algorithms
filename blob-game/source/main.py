@@ -11,14 +11,14 @@ from blob import Blob
 def main():
 	exec = Blob()
 	print()
-	exec.indexes()
+	
 	exec.start()
-	
 	exec.print()
-	
+	exec.indexes()
+
 	exec.move(0, 2)
 	
-	exec.print()
+	
 
 if __name__ == "__main__":
 	main()

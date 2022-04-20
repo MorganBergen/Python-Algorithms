@@ -60,24 +60,14 @@ class Map:
 		stream.close()
 		return True
 	
-	# raises index error
 	def	get_element(self, row, col):
 		row = int(row)
 		col = int(col)
-		print(row)
-		print(col)
-		if row > self.num_rows or row < 0:
-			raise IndexError
-		elif col < self.num_cols or col < 0:
-			raise IndexError
-		else:
-			return self.map[row][col]
+		return self.map[row][col]
 	
 	def set_element(self, row, col, element):
 		row = int(row)
 		col = int(col)
-	
-
 		self.map[row][col] = element
 		
 			
