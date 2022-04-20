@@ -1,4 +1,8 @@
 
+from re import S
+from tracemalloc import start
+
+
 class Maze:
 	
 	def __init__(self):
@@ -8,6 +12,7 @@ class Maze:
 		self.start_row = 0
 		self.start_col = 0
 		self.total_eaten = 0
+		self.total_ppl = 0
 		self.grid = []
 		
 	def print_grid(self):
@@ -65,7 +70,6 @@ class Maze:
 			return False
 		else:
 			return True
-	
 	def valid_position(self, row, col):
 		if self.total_rows < row:
 			return False
@@ -80,43 +84,45 @@ class Maze:
 
 	def reset_grid(self):
 		self.fileio()
+	
+	def count_ppl(self):
+		ppl = 0
+		for i in range(len(self.grid)):
+			ppl = self.grid[i].count('P') + ppl
+		return (ppl)
+
 	def start(self):
-		self.grid[self.start_row][self.start_col] = "•"
+		self.total_ppl = self.count_ppl()
+		if self.grid[self.start_row][self.start_col] == 'P':
+			self.total_eaten = self.total_eaten + 1
+		else:
+			self.grid[self.start_row][self.start_col] = '•'
+			print(f"total eaten = {self.total_eaten}")
+			print(f"total people = {self.total_ppl}")
+		
 
 	# row 0 col 2
 	def find_path(self, row, col):
-		
-		if self.grid[row][col] == 'B':
-			print("recursive base case stop here")
-			return False
+		if self.valid_move(row - 1, col):
+			if self.mark_path(row - 1, col):
+				return (self.find_path(row - 1, col))
+		elif self.valid_move(row, col - 1):
+			if self.mark_path(row, col - 1):
+				return (self.find_path(row, col - 1))
+		elif self.valid_move(row + 1, col):
+			if self.mark_path(row + 1, col):
+				return self.find_path(row + 1, col)
+		elif self.valid_move(row, col - 1):
+			if self.mark_path(row, col - 1):
+				return self.find_path(row, col - 1)
 		else:
-			if self.valid_move(row - 1, col):
-				print("valid_move worked")
-				# self.mark_path(row - 1, col)
-				# return self.find_path(row - 1, col)
-			# if self.valid_move(row, col - 1):
-			# 	self.mark_path(row, col - 1)
-			# 	return self.find_path(row, col - 1)
-			# if self.valid_move(row, col - 1):
-			# 	self.mark_path(row, col - 1)
-			# 	return self.find_path(row, col - 1)
-			# if self.valid_move(row, col - 1):
-			# 	self.mark_path(row, col - 1)
-			# 	return self.find_path(row, col - 1)
-			else:
-				print("yep its not valid")
+			if self.grid[row][col] == 'B' and self.total_eaten == self.total_ppl:
+				print("recursive base case stop here")
+				return False
 
 	def valid_move(self, row, col):
-		if self.valid_position(row, col):
-			x = self.grid[row][col]
-			print(f"{row}{col}{x}")
-		else:
-			print("not valid")
-			return False
-		# if x == "S":
-		# 	return True
+		return (self.valid_position(row, col))
 
-	
 	def mark_path(self, row, col):
 		self.grid[row][col] = "•"
 		if self.grid[row][col] == "•":

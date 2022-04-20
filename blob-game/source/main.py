@@ -21,9 +21,9 @@ def main():
 	m.build_grid()
 	
 	m.start()
+
 	m.print_grid()
-	
 	m.find_path(m.start_row, m.start_col)
-	
+	m.print_grid()
 
 main()
