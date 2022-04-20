@@ -7,6 +7,7 @@ class Maze:
 		self.total_cols = 0
 		self.start_row = 0
 		self.start_col = 0
+		self.total_eaten = 0
 		self.grid = []
 		
 	def print_grid(self):
@@ -67,6 +68,8 @@ class Maze:
 	def reset_grid(self):
 		self.fileio()
 
+	def find_path(self, row, col):
+		return True
 
-
-	
+	def valid_move(self, row, col):
+		return False
