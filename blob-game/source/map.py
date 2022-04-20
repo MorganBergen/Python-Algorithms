@@ -22,11 +22,10 @@ class Map:
 		self.start_col = 0
 		self.map = []
 
-#	self.file = input("file name: ")
 	def allocate(self):
 		stop_running = False
 		while stop_running == False:
-#			self.file = input("file name: ")
+			# self.file = input("file name: ")
 			self.file = "input.txt"
 			stop_running = self.fileIO()
 	

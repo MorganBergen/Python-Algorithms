@@ -13,7 +13,7 @@ def main():
 	print()
 	
 #	exec.start()
-	
+	print(exec.city.map)
 	exec.indexes()
 	exec.print()
 	exec.move(0, 2)

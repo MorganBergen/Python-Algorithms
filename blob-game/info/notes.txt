@@ -1,0 +1,6 @@
+data structures and algorithms
+
+chapter 10 recursion 
+page 308
+
+note:  you cannot pass control of a left or right member variables to a function.

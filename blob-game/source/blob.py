@@ -1,3 +1,6 @@
+'''
+'''
+
 from map import Map
 
 class Blob:
@@ -5,6 +8,7 @@ class Blob:
 	def __init__(self):
 		self.city = Map()
 		self.city.allocate()
+		self.copy = self.city.map
 		self.counter = 0
 		self.exaustive_search = 0
 	
@@ -40,6 +44,8 @@ class Blob:
 				return True
 			elif temp == "#":
 				return False
+			elif temp == 4:
+				return True
 			else:
 				return False
 	
@@ -49,7 +55,6 @@ class Blob:
 	def move(self, row, col):
 		row = int(row)
 		col = int(col)
-		exaustive_search = 0
 		
 		if row < 0 or col < 0:
 			return False
@@ -77,17 +82,15 @@ class Blob:
 				return (self.move(row, col - 1))
 			
 			elif self.exaustive_search == 4:
-				return False
+				print(f" [{row}][{col}] {self.unmark(row, col)}->{self.city.map[row][col]}")
+				return True
 				
 			else:
 				return False
-			
 		
-#
-#	def mark(self, row, col):
-#		prev = self.city.map[row][col]
-		
-	
+	def unmark(self, row, col):
+		print(self.copy[row][col])
+		self.city.map[row][col] = self.copy[row][col]
 	
 	def mark(self, row, col):
 		previous = self.city.map[row][col]
@@ -95,11 +98,3 @@ class Blob:
 		self.counter = self.counter + 1
 		if previous != None:
 			return(previous)
-
-
-
-
-
-
-
-
