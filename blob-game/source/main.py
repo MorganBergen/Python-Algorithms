@@ -12,10 +12,10 @@ def main():
 	exec = Blob()
 	print()
 	
-	exec.start()
-	exec.print()
+#	exec.start()
+	
 	exec.indexes()
-
+	exec.print()
 	exec.move(0, 2)
 	
 	

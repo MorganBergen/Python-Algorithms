@@ -21,7 +21,7 @@ class Map:
 		self.start_row = 0
 		self.start_col = 0
 		self.map = []
-	
+
 #	self.file = input("file name: ")
 	def allocate(self):
 		stop_running = False
@@ -41,7 +41,7 @@ class Map:
 			start = stream.readline().split()
 			
 			self.map = list(stream.read().splitlines())
-		
+			
 			self.num_rows = int(dim[0])
 			self.num_cols = int(dim[1])
 			self.start_row = int(start[0])
@@ -56,7 +56,7 @@ class Map:
 			
 			for i in range(len(self.map)):
 				self.map[i] = list(self.map[i])
-				
+	
 		stream.close()
 		return True
 	
@@ -69,7 +69,7 @@ class Map:
 		row = int(row)
 		col = int(col)
 		self.map[row][col] = element
-		
-			
-		
-	
+
+
+
+
