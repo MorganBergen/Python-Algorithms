@@ -65,11 +65,69 @@ class Maze:
 			return False
 		else:
 			return True
+	
+	def valid_position(self, row, col):
+		if self.total_rows < row:
+			return False
+		elif self.total_cols < col:
+			return False
+		elif row < 0:
+			return False
+		elif col < 0:
+			return False
+		else:
+			return True
+
 	def reset_grid(self):
 		self.fileio()
+	def start(self):
+		self.grid[self.start_row][self.start_col] = "•"
 
+	# row 0 col 2
 	def find_path(self, row, col):
-		return True
+		
+		if self.grid[row][col] == 'B':
+			print("recursive base case stop here")
+			return False
+		else:
+			if self.valid_move(row - 1, col):
+				print("valid_move worked")
+				# self.mark_path(row - 1, col)
+				# return self.find_path(row - 1, col)
+			# if self.valid_move(row, col - 1):
+			# 	self.mark_path(row, col - 1)
+			# 	return self.find_path(row, col - 1)
+			# if self.valid_move(row, col - 1):
+			# 	self.mark_path(row, col - 1)
+			# 	return self.find_path(row, col - 1)
+			# if self.valid_move(row, col - 1):
+			# 	self.mark_path(row, col - 1)
+			# 	return self.find_path(row, col - 1)
+			else:
+				print("yep its not valid")
 
 	def valid_move(self, row, col):
-		return False
+		if self.valid_position(row, col):
+			x = self.grid[row][col]
+			print(f"{row}{col}{x}")
+		else:
+			print("not valid")
+			return False
+		# if x == "S":
+		# 	return True
+
+	
+	def mark_path(self, row, col):
+		self.grid[row][col] = "•"
+		if self.grid[row][col] == "•":
+			return True
+		else:
+			return False
+
+	# all possible moves have been tried
+	def mark_exaust(self, row, col):
+		self.grid[row][col] = "B"
+		if self.grid[row][col] == "B":
+			return True
+		else:
+			return False
