@@ -6,6 +6,7 @@ class Blob:
 		self.city = Map()
 		self.city.allocate()
 		self.counter = 0
+		self.exaustive_search = 0
 	
 	def print(self):
 		for i in range(len(self.city.map)):
@@ -13,10 +14,6 @@ class Blob:
 				print(f" {self.city.get_element(i, j)}  ", end="")
 			print()
 		print()
-		for i in range(self.city.num_rows):
-			for j in range(self.city.num_cols):
-				print(f" {i}{j} ", end="")
-			print()
 	
 	def indexes(self):
 		for i in range(self.city.num_rows):
@@ -43,10 +40,6 @@ class Blob:
 				return True
 			elif temp == "#":
 				return False
-			elif str(temp).isdigit() and temp == self.counter - 2:
-				return True
-			elif temp == 0:
-				return False
 			else:
 				return False
 	
@@ -56,36 +49,43 @@ class Blob:
 	def move(self, row, col):
 		row = int(row)
 		col = int(col)
-#		print(f" current {row}{col}")
-		
+		exaustive_search = 0
 		
 		if row < 0 or col < 0:
 			return False
 		elif row > self.city.num_rows or col > self.city.num_cols:
 			return False
 		else:
-			print(f" {self.mark(row, col)} -> {self.city.map[row][col]}")
+			
+			print(f" [{row}][{col}] {self.mark(row, col)}->{self.city.map[row][col]}")
 			self.print()
 			
 			if self.is_valid_move(row - 1, col):
-				
+				self.exaustive_search = self.exaustive_search + 1
 				return (self.move(row - 1, col))
 				
 			elif self.is_valid_move(row, col + 1):
-				
+				self.exaustive_search = self.exaustive_search + 1
 				return (self.move(row, col + 1))
 			
 			elif self.is_valid_move(row + 1, col):
-				
+				self.exaustive_search = self.exaustive_search + 1
 				return (self.move(row + 1, col))
 			
 			elif self.is_valid_move(row, col - 1):
-				
+				exaustive_search = self.exaustive_search + 1
 				return (self.move(row, col - 1))
 			
-			else:
-				
+			elif self.exaustive_search == 4:
 				return False
+				
+			else:
+				return False
+			
+		
+#
+#	def mark(self, row, col):
+#		prev = self.city.map[row][col]
 		
 	
 	
