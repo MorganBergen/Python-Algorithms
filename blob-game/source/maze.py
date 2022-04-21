@@ -160,7 +160,7 @@ class Maze:
 			self.grid[row][col] = '4'
 			return True
 		elif x == '4':
-			self.grid[row][col] = 'B' #WE MUST MOVE THIS? MARK AS 5 AND THEN
+			self.grid[row][col] = 'B' #WE MUST MOVE THIS? MARK AS 5 AND THEN?
 			return True 
 		else:
 			self.grid[row][col] = '1'
