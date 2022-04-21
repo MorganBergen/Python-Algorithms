@@ -1,5 +1,6 @@
 
 from re import S
+import re
 from tracemalloc import start
 from xml.dom.minidom import Element
 
@@ -88,34 +89,64 @@ class Maze:
 		return (ppl)
 
 	def start(self):
-		self.grid[self.start_row][self.start_col] = '1'
 		self.find_path(self.start_row, self.start_col)
 
+
+	def find_path(self, row )
+
+
 	def find_path(self, row, col):
-	
+		
+		self.mark(row, col)
+
 		if self.valid_move(row - 1, col): #up
 			self.print_grid()
-			print("____")
+			print(f"____{self.grid[row][col]}__at__{row}{col}__up__")
 			return (self.find_path(row - 1, col))
 
 		elif self.valid_move(row, col + 1): #right
 			self.print_grid()
-			print("____")
+			print(f"____{self.grid[row][col]}__at__{row}{col}__right__")
 			return (self.find_path(row, col + 1))
 
 		elif self.valid_move(row + 1, col): #down
 			self.print_grid()
-			print("____")
+			print(f"____{self.grid[row][col]}__at__{row}{col}__down__")
 			return (self.find_path(row + 1, col))
 
 		elif self.valid_move(row, col - 1): #left
 			self.print_grid()
-			print("____")
+			print(f"____{self.grid[row][col]}__at__{row}{col}__left__")
 			return (self.find_path(row, col - 1))
 
-		else:
+		elif self.grid[row][col] == 'X':
+			self.unmark(row, col)
 			self.print_grid()
-			print("____")
+			print(f"____{self.grid[row][col]}__at__{row}{col}____")
+			return (self.find_path(row, col))
+		else:
+			return False
+
+	def unmark(self, row, col):
+		if self.grid[row][col] == 'B':
+			self.grid[row][col] = '1'
+
+
+	def mark(self, row, col):
+		if self.grid[row][col] == 'B':	
+			return False
+		elif self.grid[row][col] == '#':
+			return False
+		elif self.grid[row][col] == 'P':
+			self.total_eaten = self.total_eaten + 1
+			self.grid[row][col] = '1'
+		elif self.grid[row][col] == 'S':
+			self.grid[row][col] = '1'
+		elif self.grid[row][col] == '1':
+			self.grid[row][col] = 'X'
+		elif self.grid[row][col] == 'X':
+			self.grid[row][col] = 'B'
+		else:
 			return False
 
 	def valid_move(self, row, col):
@@ -125,23 +156,12 @@ class Maze:
 			elif self.grid[row][col] == '#':
 				return False
 			elif self.grid[row][col] == 'P':
-				self.total_eaten = self.total_eaten + 1
-				self.grid[row][col] = '1'
 				return True
 			elif self.grid[row][col] == 'S':
-				self.grid[row][col] = '1'
 				return True
 			elif self.grid[row][col] == '1':
-				self.grid[row][col] = '2'
 				return True
-			elif self.grid[row][col] == '2':
-				self.grid[row][col] = '3'
-				return True
-			elif self.grid[row][col] == '3':
-				self.grid[row][col] = '4'
-				return True
-			elif self.grid[row][col] == '4':
-				self.grid[row][col] = 'B'
+			elif self.grid[row][col] == 'X':
 				return True
 			else:
 				return False
