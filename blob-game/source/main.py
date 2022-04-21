@@ -15,27 +15,64 @@ def build_reset_test():
 	print("_____________________________")
 	return None
 
-def main():
-
+def test():
 	m = Maze()
 	m.build_grid()
-
 	m.start()
-
 	m.print_grid()
 	m.find_path(0, 2)
-
+	print(f"total eaten = {m.total_eaten}")
+	print(f"total people = {m.total_ppl}")
 	print("_______")
 	print(f"total eaten = {m.total_eaten}")
 	print(f"total people = {m.total_ppl}")
 	m.print_grid()
 
+def main():
+
+	m = Maze()
+	m.build_grid()
+	m.print_grid()
+	print("____")
+	m.start()
+	print("____")
 
 
 main()
 
 
 '''
+
+# def start(self):
+	# 	self.total_ppl = self.count_ppl()
+	# 	if self.grid[self.start_row][self.start_col] == 'P':
+	# 		self.total_eaten = self.total_eaten + 1
+	# 	else:
+	# 		self.grid[self.start_row][self.start_col] = '1'
+			
+	
+	# row 0 col 2
+	# def find_path(self, row, col):
+	# 	if self.valid_move(row - 1, col):				# up
+	# 		if self.mark_path(row - 1, col):
+	# 			return (self.find_path(row - 1, col))
+	# 	elif self.valid_move(row, col + 1): 			#right
+	# 		if self.mark_path(row, col + 1):
+	# 			return (self.find_path(row, col + 1))
+	# 	elif self.valid_move(row + 1, col):				#down
+	# 		if self.mark_path(row + 1, col):
+	# 			return self.find_path(row + 1, col)
+	# 	elif self.valid_move(row, col - 1):				#left
+	# 		if self.mark_path(row, col - 1):
+	# 			return self.find_path(row, col - 1)
+	# 	else:
+	# 		self.grid[row][col] = "B" #MARKING TWICE
+	# 		if self.total_eaten == self.total_ppl:
+	# 			print("recursive base case stop here")
+	# 			return False
+	# 		else:
+	# 			return False
+	
 old funcyion definition
 def valid_move(self, row, col):
 		if self.valid_position(row, col):

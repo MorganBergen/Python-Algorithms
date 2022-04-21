@@ -3,6 +3,8 @@ from re import S
 from tracemalloc import start
 from xml.dom.minidom import Element
 
+from pyparsing import col
+
 
 class Maze:
 	
@@ -29,6 +31,7 @@ class Maze:
 			self.file = "1-input.txt"
 			# self.file = "2-input.txt"
 			x = self.fileio()
+		self.total_ppl = self.count_ppl()
 
 	def fileio(self):
 		try:
@@ -75,8 +78,6 @@ class Maze:
 		else:
 			return True
 	
-	
-	
 	def reset_grid(self):
 		self.fileio()
 
@@ -87,60 +88,38 @@ class Maze:
 		return (ppl)
 
 	def start(self):
-		self.total_ppl = self.count_ppl()
-		if self.grid[self.start_row][self.start_col] == 'P':
-			self.total_eaten = self.total_eaten + 1
-		else:
-			self.grid[self.start_row][self.start_col] = '1'
-			print(f"total eaten = {self.total_eaten}")
-			print(f"total people = {self.total_ppl}")
-	
-	# row 0 col 2
-	def find_path(self, row, col):
-		if self.valid_move(row - 1, col):				# up
-			if self.mark_path(row - 1, col):
-				return (self.find_path(row - 1, col))
-		elif self.valid_move(row, col + 1): 			#right
-			if self.mark_path(row, col + 1):
-				return (self.find_path(row, col + 1))
-		elif self.valid_move(row + 1, col):				#down
-			if self.mark_path(row + 1, col):
-				return self.find_path(row + 1, col)
-		elif self.valid_move(row, col - 1):				#left
-			if self.mark_path(row, col - 1):
-				return self.find_path(row, col - 1)
-		else:
-			self.grid[row][col] = "B" #MARKING TWICE
-			if self.total_eaten == self.total_ppl:
-				print("recursive base case stop here")
-				return False
-			else:
-				return False
+		self.grid[self.start_row][self.start_col] = '1'
+		self.find_path(self.start_row, self.start_col)
 
 	def find_path(self, row, col):
+	
 		if self.valid_move(row - 1, col): #up
 			self.print_grid()
+			print("____")
 			return (self.find_path(row - 1, col))
 
 		elif self.valid_move(row, col + 1): #right
 			self.print_grid()
+			print("____")
 			return (self.find_path(row, col + 1))
 
 		elif self.valid_move(row + 1, col): #down
 			self.print_grid()
+			print("____")
 			return (self.find_path(row + 1, col))
-		
-		elif self.valid_move(row, col - 1):
+
+		elif self.valid_move(row, col - 1): #left
 			self.print_grid()
+			print("____")
 			return (self.find_path(row, col - 1))
-		
+
 		else:
 			self.print_grid()
+			print("____")
 			return False
-		
 
 	def valid_move(self, row, col):
-		if row < self.total_rows and row > 0 and col < self.total_cols and col > 0:
+		if row < self.total_rows and row >= 0 and col < self.total_cols and col >= 0:
 			if self.grid[row][col] == 'B':
 				return False
 			elif self.grid[row][col] == '#':
