@@ -117,50 +117,55 @@ class Maze:
 			else:
 				return False
 
-	# def find_path(self, row, col):
-	# 	if self.valid_move(row - 1, col):
-			
-	# 		if self.mark_path(row - 1, col):
-	# 			return (self.find_path(row - 1, col))
+	def find_path(self, row, col):
+		if self.valid_move(row - 1, col): #up
+			self.print_grid()
+			return (self.find_path(row - 1, col))
+
+		elif self.valid_move(row, col + 1): #right
+			self.print_grid()
+			return (self.find_path(row, col + 1))
+
+		elif self.valid_move(row + 1, col): #down
+			self.print_grid()
+			return (self.find_path(row + 1, col))
+		
+		elif self.valid_move(row, col - 1):
+			self.print_grid()
+			return (self.find_path(row, col - 1))
+		
+		else:
+			self.print_grid()
+			return False
+		
 
 	def valid_move(self, row, col):
 		if row < self.total_rows and row > 0 and col < self.total_cols and col > 0:
-			if self.grid[row][col] == 'B' or self.grid[row][col] == '#':
+			if self.grid[row][col] == 'B':
+				return False
+			elif self.grid[row][col] == '#':
 				return False
 			elif self.grid[row][col] == 'P':
 				self.total_eaten = self.total_eaten + 1
+				self.grid[row][col] = '1'
 				return True
 			elif self.grid[row][col] == 'S':
+				self.grid[row][col] = '1'
 				return True
 			elif self.grid[row][col] == '1':
+				self.grid[row][col] = '2'
 				return True
 			elif self.grid[row][col] == '2':
+				self.grid[row][col] = '3'
 				return True
 			elif self.grid[row][col] == '3':
+				self.grid[row][col] = '4'
 				return True
 			elif self.grid[row][col] == '4':
+				self.grid[row][col] = 'B'
 				return True
 			else:
 				return False
 		else:
 			return False
 
-
-	def mark_path(self, row, col):
-		x = self.grid[row][col]
-
-		if x == '1':
-			self.grid[row][col] = '2'
-			return True
-		elif x == '2':
-			self.grid[row][col] = '3'
-			return True
-		elif x == '3':
-			self.grid[row][col] = '4'
-			return True
-		elif x == '4':
-			self.grid[row][col] = 'B' #WE MUST MOVE THIS? MARK AS 5 AND THEN?
-			return True 
-		else:
-			self.grid[row][col] = '1'
-			return True

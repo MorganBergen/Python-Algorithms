@@ -72,4 +72,24 @@ def valid_move(self, row, col):
 			return False
 		else:
 			return True
+
+
+	def mark_path(self, row, col):
+		x = self.grid[row][col]
+
+		if x == '1':
+			self.grid[row][col] = '2'
+			return True
+		elif x == '2':
+			self.grid[row][col] = '3'
+			return True
+		elif x == '3':
+			self.grid[row][col] = '4'
+			return True
+		elif x == '4':
+			self.grid[row][col] = 'B' #WE MUST MOVE THIS? MARK AS 5 AND THEN?
+			return True 
+		else:
+			self.grid[row][col] = '1'
+			return True			
 '''
