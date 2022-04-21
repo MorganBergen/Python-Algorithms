@@ -147,7 +147,6 @@ class Maze:
 
 
 	def mark_path(self, row, col):
-		
 		x = self.grid[row][col]
 
 		if x == '1':
