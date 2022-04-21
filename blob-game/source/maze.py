@@ -117,14 +117,14 @@ class Maze:
 			else:
 				return False
 
-	def find_path(self, row, col):
-		if self.valid_move(row - 1, col):
+	# def find_path(self, row, col):
+	# 	if self.valid_move(row - 1, col):
 			
-			if self.mark_path(row - 1, col):
-				return (self.find_path(row - 1, col))
+	# 		if self.mark_path(row - 1, col):
+	# 			return (self.find_path(row - 1, col))
 
 	def valid_move(self, row, col):
-		if row <= self.total_rows and row > 0 and col <= self.total_cols and col > 0:
+		if row < self.total_rows and row > 0 and col < self.total_cols and col > 0:
 			if self.grid[row][col] == 'B' or self.grid[row][col] == '#':
 				return False
 			elif self.grid[row][col] == 'P':
@@ -142,13 +142,9 @@ class Maze:
 				return True
 			else:
 				return False
-
 		else:
 			return False
 
-
-
-	
 
 	def mark_path(self, row, col):
 		

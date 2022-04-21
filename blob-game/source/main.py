@@ -26,10 +26,11 @@ def main():
 	m.find_path(0, 2)
 
 	print("_______")
-	m.print_grid()
-
 	print(f"total eaten = {m.total_eaten}")
 	print(f"total people = {m.total_ppl}")
+	m.print_grid()
+
+
 
 main()
 
