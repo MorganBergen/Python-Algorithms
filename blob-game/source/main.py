@@ -32,16 +32,26 @@ def main():
 
 	m = Maze()
 	m.build_grid()
+	print("_____")
 	m.print_grid()
-	print("____")
+	print("_____")
 	m.start()
-	print("____")
-
+	m.print_grid()
+	print("_____")
 
 main()
 
 
 '''
+main.py
+maze.py
+'''
+
+
+
+'''
+
+
 
 # def start(self):
 	# 	self.total_ppl = self.count_ppl()
@@ -72,7 +82,7 @@ main()
 	# 			return False
 	# 		else:
 	# 			return False
-	
+
 old funcyion definition
 def valid_move(self, row, col):
 		if self.valid_position(row, col):

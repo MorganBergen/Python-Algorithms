@@ -1,11 +1,4 @@
 
-from re import S
-import re
-from tracemalloc import start
-from xml.dom.minidom import Element
-
-from pyparsing import col
-
 
 class Maze:
 	
@@ -18,6 +11,7 @@ class Maze:
 		self.total_eaten = 0
 		self.total_ppl = 0
 		self.grid = []
+		self.track = 0
 		
 	def print_grid(self):
 		for i in range(len(self.grid)):
@@ -89,82 +83,83 @@ class Maze:
 		return (ppl)
 
 	def start(self):
-		self.find_path(self.start_row, self.start_col)
-
-
-	def find_path(self, row )
-
-
+		self.walk(self.start_row, self.start_col)
+	'''
 	def find_path(self, row, col):
 		
 		self.mark(row, col)
+		self.track = self.track + 1
 
 		if self.valid_move(row - 1, col): #up
 			self.print_grid()
-			print(f"____{self.grid[row][col]}__at__{row}{col}__up__")
+			# print(f"____{self.grid[row][col]}__at__{row}{col}__up__")
+			print(f"________") 
 			return (self.find_path(row - 1, col))
 
 		elif self.valid_move(row, col + 1): #right
 			self.print_grid()
-			print(f"____{self.grid[row][col]}__at__{row}{col}__right__")
+			# print(f"____{self.grid[row][col]}__at__{row}{col}__right__")
+			print(f"________") 
 			return (self.find_path(row, col + 1))
 
 		elif self.valid_move(row + 1, col): #down
 			self.print_grid()
-			print(f"____{self.grid[row][col]}__at__{row}{col}__down__")
+			# print(f"____{self.grid[row][col]}__at__{row}{col}__down__")
+			print(f"________") 
 			return (self.find_path(row + 1, col))
 
 		elif self.valid_move(row, col - 1): #left
 			self.print_grid()
-			print(f"____{self.grid[row][col]}__at__{row}{col}__left__")
+			# print(f"____{self.grid[row][col]}__at__{row}{col}__left__")
+			print(f"________") 
 			return (self.find_path(row, col - 1))
 
 		elif self.grid[row][col] == 'X':
 			self.unmark(row, col)
 			self.print_grid()
-			print(f"____{self.grid[row][col]}__at__{row}{col}____")
+			# {self.grid[row][col]}__at__{row}{col}
+			print(f"________") 
 			return (self.find_path(row, col))
 		else:
 			return False
+	'''
 
-	def unmark(self, row, col):
-		if self.grid[row][col] == 'B':
-			self.grid[row][col] = '1'
+	def walk(self, row, col):
+		
+		self.mark(row, col)
 
+		self.track = self.track + 1
+		
+		if self.valid_spot(row - 1, col): #check up
+			self.walk(row - 1, col)
+		
+		if self.valid_spot(row, col + 1): #check right
+			self.walk(row, col + 1)
+
+		if self.valid_spot(row + 1, col): #check down
+			self.walk(row + 1, col)
+		
+		if self.valid_spot(row, col - 1): #check left last check
+			self.walk(row, col - 1)
+			
+		self.grid[row][col] = 'B'
 
 	def mark(self, row, col):
-		if self.grid[row][col] == 'B':	
-			return False
-		elif self.grid[row][col] == '#':
-			return False
-		elif self.grid[row][col] == 'P':
+		if self.grid[row][col] == 'P':
 			self.total_eaten = self.total_eaten + 1
-			self.grid[row][col] = '1'
+			self.grid[row][col] = self.track
 		elif self.grid[row][col] == 'S':
-			self.grid[row][col] = '1'
-		elif self.grid[row][col] == '1':
-			self.grid[row][col] = 'X'
-		elif self.grid[row][col] == 'X':
-			self.grid[row][col] = 'B'
+			self.grid[row][col] = self.track
 		else:
 			return False
 
-	def valid_move(self, row, col):
-		if row < self.total_rows and row >= 0 and col < self.total_cols and col >= 0:
-			if self.grid[row][col] == 'B':
-				return False
-			elif self.grid[row][col] == '#':
-				return False
-			elif self.grid[row][col] == 'P':
+	def valid_spot(self, row, col):
+		if row >= 0 and row < self.total_rows and col >= 0 and col < self.total_cols:
+			if self.grid[row][col] == 'P':
 				return True
 			elif self.grid[row][col] == 'S':
-				return True
-			elif self.grid[row][col] == '1':
-				return True
-			elif self.grid[row][col] == 'X':
 				return True
 			else:
 				return False
 		else:
 			return False
-
