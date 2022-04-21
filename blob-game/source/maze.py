@@ -1,6 +1,7 @@
 
 from re import S
 from tracemalloc import start
+from xml.dom.minidom import Element
 
 
 class Maze:
@@ -20,6 +21,7 @@ class Maze:
 			for j in range(len(self.grid[i])):
 				print(f"{self.grid[i][j]}", end="")
 			print()
+
 	def build_grid(self):
 		x = False
 		while x == False:
@@ -27,6 +29,7 @@ class Maze:
 			self.file = "1-input.txt"
 			# self.file = "2-input.txt"
 			x = self.fileio()
+
 	def fileio(self):
 		try:
 			f = open(self.file, 'r')
@@ -49,6 +52,7 @@ class Maze:
 					self.grid[i] = list(self.grid[i])
 		f.close()
 		return True
+
 	def valid_dimensions(self):
 		if self.total_rows < 1:
 			print(f"error: invalid dimensions provided, total rows cannot be less than 1")
@@ -70,10 +74,11 @@ class Maze:
 			return False
 		else:
 			return True
+	
 	def valid_position(self, row, col):
-		if self.total_rows < row:
+		if self.total_rows <= row:
 			return False
-		elif self.total_cols < col:
+		elif self.total_cols <= col:
 			return False
 		elif row < 0:
 			return False
@@ -81,10 +86,10 @@ class Maze:
 			return False
 		else:
 			return True
-
+	
 	def reset_grid(self):
 		self.fileio()
-	
+
 	def count_ppl(self):
 		ppl = 0
 		for i in range(len(self.grid)):
@@ -96,19 +101,18 @@ class Maze:
 		if self.grid[self.start_row][self.start_col] == 'P':
 			self.total_eaten = self.total_eaten + 1
 		else:
-			self.grid[self.start_row][self.start_col] = '•'
+			self.grid[self.start_row][self.start_col] = '1'
 			print(f"total eaten = {self.total_eaten}")
 			print(f"total people = {self.total_ppl}")
-		
-
+	
 	# row 0 col 2
 	def find_path(self, row, col):
 		if self.valid_move(row - 1, col):
 			if self.mark_path(row - 1, col):
 				return (self.find_path(row - 1, col))
-		elif self.valid_move(row, col - 1):
-			if self.mark_path(row, col - 1):
-				return (self.find_path(row, col - 1))
+		elif self.valid_move(row, col + 1):
+			if self.mark_path(row, col + 1):
+				return (self.find_path(row, col + 1))
 		elif self.valid_move(row + 1, col):
 			if self.mark_path(row + 1, col):
 				return self.find_path(row + 1, col)
@@ -116,24 +120,53 @@ class Maze:
 			if self.mark_path(row, col - 1):
 				return self.find_path(row, col - 1)
 		else:
-			if self.grid[row][col] == 'B' and self.total_eaten == self.total_ppl:
+			self.grid[row][col] = "B"
+			if self.total_eaten == self.total_ppl:
 				print("recursive base case stop here")
+				return False
+			else:
 				return False
 
 	def valid_move(self, row, col):
-		return (self.valid_position(row, col))
+		if self.valid_position(row, col):
+			x = self.grid[row][col]
+			if x == 'S':
+				return True
+			elif x == 'P':
+				self.total_eaten = self.total_eaten + 1
+				return True
+			elif x == '#':
+				return False
+			else:
+				if x == '1':
+					return True
+				elif x == '2':
+					return True
+				elif x == '3':
+					return True
+				elif x == '4':
+					return True
+				elif x == 'B':
+					return False
+		else:
+			return False
 
 	def mark_path(self, row, col):
-		self.grid[row][col] = "•"
-		if self.grid[row][col] == "•":
-			return True
-		else:
-			return False
+		
+		x = self.grid[row][col]
 
-	# all possible moves have been tried
-	def mark_exaust(self, row, col):
-		self.grid[row][col] = "B"
-		if self.grid[row][col] == "B":
+		if x == '1':
+			self.grid[row][col] = '2'
+			return True
+		elif x == '2':
+			self.grid[row][col] = '3'
+			return True
+		elif x == '3':
+			self.grid[row][col] = '4'
+			return True
+		elif x == '4':
+			self.grid[row][col] = 'B'
 			return True
 		else:
-			return False
+			self.grid[row][col] = '1'
+			return True

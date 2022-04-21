@@ -19,11 +19,12 @@ def main():
 
 	m = Maze()
 	m.build_grid()
-	
+
 	m.start()
 
 	m.print_grid()
-	m.find_path(m.start_row, m.start_col)
+	m.find_path(0, 2)
+	
 	m.print_grid()
 
 main()
