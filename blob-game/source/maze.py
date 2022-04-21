@@ -75,17 +75,7 @@ class Maze:
 		else:
 			return True
 	
-	def valid_position(self, row, col):
-		if self.total_rows <= row:
-			return False
-		elif self.total_cols <= col:
-			return False
-		elif row < 0:
-			return False
-		elif col < 0:
-			return False
-		else:
-			return True
+	
 	
 	def reset_grid(self):
 		self.fileio()
@@ -107,49 +97,58 @@ class Maze:
 	
 	# row 0 col 2
 	def find_path(self, row, col):
-		if self.valid_move(row - 1, col):
+		if self.valid_move(row - 1, col):				# up
 			if self.mark_path(row - 1, col):
 				return (self.find_path(row - 1, col))
-		elif self.valid_move(row, col + 1):
+		elif self.valid_move(row, col + 1): 			#right
 			if self.mark_path(row, col + 1):
 				return (self.find_path(row, col + 1))
-		elif self.valid_move(row + 1, col):
+		elif self.valid_move(row + 1, col):				#down
 			if self.mark_path(row + 1, col):
 				return self.find_path(row + 1, col)
-		elif self.valid_move(row, col - 1):
+		elif self.valid_move(row, col - 1):				#left
 			if self.mark_path(row, col - 1):
 				return self.find_path(row, col - 1)
 		else:
-			self.grid[row][col] = "B"
+			self.grid[row][col] = "B" #MARKING TWICE
 			if self.total_eaten == self.total_ppl:
 				print("recursive base case stop here")
 				return False
 			else:
 				return False
 
+	def find_path(self, row, col):
+		if self.valid_move(row - 1, col):
+			
+			if self.mark_path(row - 1, col):
+				return (self.find_path(row - 1, col))
+
 	def valid_move(self, row, col):
-		if self.valid_position(row, col):
-			x = self.grid[row][col]
-			if x == 'S':
-				return True
-			elif x == 'P':
+		if row <= self.total_rows and row > 0 and col <= self.total_cols and col > 0:
+			if self.grid[row][col] == 'B' or self.grid[row][col] == '#':
+				return False
+			elif self.grid[row][col] == 'P':
 				self.total_eaten = self.total_eaten + 1
 				return True
-			elif x == '#':
-				return False
+			elif self.grid[row][col] == 'S':
+				return True
+			elif self.grid[row][col] == '1':
+				return True
+			elif self.grid[row][col] == '2':
+				return True
+			elif self.grid[row][col] == '3':
+				return True
+			elif self.grid[row][col] == '4':
+				return True
 			else:
-				if x == '1':
-					return True
-				elif x == '2':
-					return True
-				elif x == '3':
-					return True
-				elif x == '4':
-					return True
-				elif x == 'B':
-					return False
+				return False
+
 		else:
 			return False
+
+
+
+	
 
 	def mark_path(self, row, col):
 		
@@ -165,8 +164,8 @@ class Maze:
 			self.grid[row][col] = '4'
 			return True
 		elif x == '4':
-			self.grid[row][col] = 'B'
-			return True
+			self.grid[row][col] = 'B' #WE MUST MOVE THIS? MARK AS 5 AND THEN
+			return True 
 		else:
 			self.grid[row][col] = '1'
 			return True
