@@ -84,6 +84,7 @@ class Maze:
 
 	def start(self):
 		self.walk(self.start_row, self.start_col)
+
 	'''
 	def find_path(self, row, col):
 		
@@ -127,6 +128,7 @@ class Maze:
 	def walk(self, row, col):
 		
 		self.mark(row, col)
+		self.print_grid()
 
 		self.track = self.track + 1
 		
