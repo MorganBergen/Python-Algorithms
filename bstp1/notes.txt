@@ -1,0 +1,84 @@
+eecs 268 lab08
+bst
+
+time complexity
+
+array search				o(n)
+linked list search			o(n)
+sorted array search			o(n)
+binary search tree search	o(ln(n))
+
+array insertion
+linked list insertion
+sorted array insertion
+
+pseudo code for some operations
+
+	def search(key):
+		if root == None:
+			if root value == key:
+				return root
+				
+		if root.value < key:
+			return search (root -> right.value)
+			
+		else:
+			search (root -> left.value)
+			
+			
+	def insert(root, key):
+		if root == None:
+			return (Node(key))
+		else:
+			if root.value == key:
+				return (root)
+				# throw exception
+			elif root.value < key:
+				root.right = insert(root.right)
+			else:
+				root.left = insert(root.left, key)
+		return (root)
+		
+		
+three different traversal methods
+
+in order traversal level order
+<left><root><right>
+
+post order travesal methods
+<root><left><right>
+
+pre order traversal
+<right><left><root>
+
+
+	def preO():
+		if root:
+			print(data)
+			preO(root -> left)
+			preO(root -> right)
+			
+	def inO():
+		if root:
+			inO(root -> left)
+			print(data)
+			inO(root -> right)
+			
+	def postO(self):
+		if root:
+			preO(root -> left)
+			preO(root -> right)
+			print(data)
+			
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

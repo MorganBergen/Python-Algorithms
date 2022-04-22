@@ -12,19 +12,24 @@ class Maze:
 		self.total_ppl = 0
 		self.grid = []
 		self.track = 0
+		self.cur = []
 		
 	def print_grid(self):
 		for i in range(len(self.grid)):
 			for j in range(len(self.grid[i])):
-				print(f"{self.grid[i][j]}", end="")
+				print(f" [{self.grid[i][j]}]{i}{j} ", end="")
 			print()
+
+	def print_simple(self):
+		for i in range(len(self.grid)):
+			for j in range(len(self.grid[i])):
+				print(f" [{self.grid[i][j]}] ", end="")
+			print()		
 
 	def build_grid(self):
 		x = False
 		while x == False:
-			# self.file = input("enter file: ")
-			self.file = "1-input.txt"
-			# self.file = "2-input.txt"
+			self.file = input("enter file: ")
 			x = self.fileio()
 		self.total_ppl = self.count_ppl()
 
@@ -85,51 +90,10 @@ class Maze:
 	def start(self):
 		self.walk(self.start_row, self.start_col)
 
-	'''
-	def find_path(self, row, col):
-		
-		self.mark(row, col)
-		self.track = self.track + 1
-
-		if self.valid_move(row - 1, col): #up
-			self.print_grid()
-			# print(f"____{self.grid[row][col]}__at__{row}{col}__up__")
-			print(f"________") 
-			return (self.find_path(row - 1, col))
-
-		elif self.valid_move(row, col + 1): #right
-			self.print_grid()
-			# print(f"____{self.grid[row][col]}__at__{row}{col}__right__")
-			print(f"________") 
-			return (self.find_path(row, col + 1))
-
-		elif self.valid_move(row + 1, col): #down
-			self.print_grid()
-			# print(f"____{self.grid[row][col]}__at__{row}{col}__down__")
-			print(f"________") 
-			return (self.find_path(row + 1, col))
-
-		elif self.valid_move(row, col - 1): #left
-			self.print_grid()
-			# print(f"____{self.grid[row][col]}__at__{row}{col}__left__")
-			print(f"________") 
-			return (self.find_path(row, col - 1))
-
-		elif self.grid[row][col] == 'X':
-			self.unmark(row, col)
-			self.print_grid()
-			# {self.grid[row][col]}__at__{row}{col}
-			print(f"________") 
-			return (self.find_path(row, col))
-		else:
-			return False
-	'''
-
 	def walk(self, row, col):
 		
+		self.cur = [row, col]
 		self.mark(row, col)
-		self.print_grid()
-
 		self.track = self.track + 1
 		
 		if self.valid_spot(row - 1, col): #check up
@@ -142,11 +106,15 @@ class Maze:
 			self.walk(row + 1, col)
 		
 		if self.valid_spot(row, col - 1): #check left last check
-			self.walk(row, col - 1)
-			
+			self.walk(row, col - 1)	
+
 		self.grid[row][col] = 'B'
 
 	def mark(self, row, col):
+		print(f" [{self.grid[row][col]}]{self.cur[0]}{self.cur[1]}")
+		# self.print_grid()	
+		self.print_simple()
+		print()
 		if self.grid[row][col] == 'P':
 			self.total_eaten = self.total_eaten + 1
 			self.grid[row][col] = self.track
@@ -154,6 +122,7 @@ class Maze:
 			self.grid[row][col] = self.track
 		else:
 			return False
+		print(f" [{self.grid[row][col]}]{self.cur[0]}{self.cur[1]} -> ", end="")
 
 	def valid_spot(self, row, col):
 		if row >= 0 and row < self.total_rows and col >= 0 and col < self.total_cols:
