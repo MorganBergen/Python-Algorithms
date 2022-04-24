@@ -1,5 +1,4 @@
 
-
 class Maze:
 	
 	def __init__(self):
@@ -10,10 +9,26 @@ class Maze:
 		self.start_col = 0
 		self.total_eaten = 0
 		self.total_ppl = 0
+		self.total_sewers = 0
+		self.sewer_row_locations = []
+		self.sewer_col_locations = []
 		self.grid = []
 		self.track = 0
 		self.cur = []
-		
+
+	def count_sewers(self):
+		for row in self.grid:
+			for value in row:
+				if value == '@':
+					self.total_sewers = self.total_sewers + 1
+	
+	def locate_sewers(self):
+		for i in range(len(self.grid)):
+			for j in range(len(self.grid[i])):
+				if self.grid[i][j] == '@':
+					self.sewer_row_locations.append(i)
+					self.sewer_col_locations.append(j)
+
 	def print_grid(self):
 		for i in range(len(self.grid)):
 			for j in range(len(self.grid[i])):
@@ -23,15 +38,34 @@ class Maze:
 	def print_simple(self):
 		for i in range(len(self.grid)):
 			for j in range(len(self.grid[i])):
-				print(f" [{self.grid[i][j]}] ", end="")
-			print()		
+				print(f" {self.grid[i][j]} ", end="")
+			print()
+
+	def print_info(self):
+		print("__________grid__________")
+		self.print_simple()
+		print("__________info__________")
+		print(f" total ppl {self.total_ppl}")
+		print(f" total eaten {self.total_eaten}")
+		print(f" total sewers {self.total_sewers}")
+		print(f" sewer locals ", end="")
+		for i in range(len(self.sewer_row_locations)):
+			print(f"[{self.sewer_row_locations[i]}, {self.sewer_col_locations[i]}] ", end="")
+		print("\n________________________________")
+
+	# def print_final(self):
+
+
 
 	def build_grid(self):
 		x = False
 		while x == False:
-			self.file = input("enter file: ")
+			# self.file = input("enter file: ")
+			self.file = "2-input.txt"
 			x = self.fileio()
 		self.total_ppl = self.count_ppl()
+		self.sewers = self.count_sewers()
+		self.locate_sewers()
 
 	def fileio(self):
 		try:
@@ -92,6 +126,7 @@ class Maze:
 
 	def walk(self, row, col):
 		
+		# print(f" [{self.grid[row][col]}]{self.cur[0]}{self.cur[1]}")
 		self.cur = [row, col]
 		self.mark(row, col)
 		self.track = self.track + 1
@@ -107,28 +142,41 @@ class Maze:
 		
 		if self.valid_spot(row, col - 1): #check left last check
 			self.walk(row, col - 1)	
-
+		
 		self.grid[row][col] = 'B'
+		
 
 	def mark(self, row, col):
-		print(f" [{self.grid[row][col]}]{self.cur[0]}{self.cur[1]}")
-		# self.print_grid()	
-		self.print_simple()
-		print()
+		
 		if self.grid[row][col] == 'P':
 			self.total_eaten = self.total_eaten + 1
 			self.grid[row][col] = self.track
 		elif self.grid[row][col] == 'S':
 			self.grid[row][col] = self.track
+		elif self.grid[row][col] == '@':
+			if self.total_ppl == self.total_eaten:
+				self.grid[row][col] = self.track
+			else:
+				self.grid[row][col] = '@'	
 		else:
 			return False
-		print(f" [{self.grid[row][col]}]{self.cur[0]}{self.cur[1]} -> ", end="")
 
 	def valid_spot(self, row, col):
 		if row >= 0 and row < self.total_rows and col >= 0 and col < self.total_cols:
 			if self.grid[row][col] == 'P':
 				return True
 			elif self.grid[row][col] == 'S':
+				return True
+			elif self.grid[row][col] == '@':
+				for i in range(self.total_sewers):
+					if row == self.sewer_row_locations[i] and col == self.sewer_col_locations[i]:
+						if i == 0:
+							self.walk(self.sewer_row_locations[i+1], self.sewer_col_locations[i+1])
+						elif i == self.total_sewers - 1:
+							self.walk(self.sewer_row_locations[i-1], self.sewer_col_locations[i-1])
+						elif i > 0 and i < self.total_sewers - 1:
+							self.walk(self.sewer_row_locations[i+1], self.sewer_col_locations[i+1])
+
 				return True
 			else:
 				return False

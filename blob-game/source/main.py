@@ -28,17 +28,13 @@ def test():
 	print(f"total people = {m.total_ppl}")
 	m.print_grid()
 
-def test1():
+def main():
 	m = Maze()
 	m.build_grid()
+	m.print_info()
 	m.start()
-
-def main():
-
-
-	test1()
-
-
+	m.print_info()
+	
 
 if __name__ == "__main__":
 	main()
