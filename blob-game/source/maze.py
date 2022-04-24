@@ -34,11 +34,11 @@ class Maze:
 			for j in range(len(self.grid[i])):
 				print(f" [{self.grid[i][j]}]{i}{j} ", end="")
 			print()
-
+ 
 	def print_simple(self):
 		for i in range(len(self.grid)):
 			for j in range(len(self.grid[i])):
-				print(f" {self.grid[i][j]} ", end="")
+				print(f"{self.grid[i][j]}", end="")
 			print()
 
 	def print_info(self):
@@ -53,15 +53,14 @@ class Maze:
 			print(f"[{self.sewer_row_locations[i]}, {self.sewer_col_locations[i]}] ", end="")
 		print("\n________________________________")
 
-	# def print_final(self):
-
-
+	def print_final(self):
+		self.print_simple()
+		print(f"total eaten {self.total_eaten}")		
 
 	def build_grid(self):
 		x = False
 		while x == False:
-			# self.file = input("enter file: ")
-			self.file = "2-input.txt"
+			self.file = input("enter file: ")
 			x = self.fileio()
 		self.total_ppl = self.count_ppl()
 		self.sewers = self.count_sewers()
@@ -170,13 +169,14 @@ class Maze:
 			elif self.grid[row][col] == '@':
 				for i in range(self.total_sewers):
 					if row == self.sewer_row_locations[i] and col == self.sewer_col_locations[i]:
-						if i == 0:
+						if i == 0 and self.total_sewers > 1:
 							self.walk(self.sewer_row_locations[i+1], self.sewer_col_locations[i+1])
+						elif i == 0 and self.total_sewers == 1:
+							self.walk(self.sewer_row_locations[i], self.sewer_col_locations[i])
 						elif i == self.total_sewers - 1:
 							self.walk(self.sewer_row_locations[i-1], self.sewer_col_locations[i-1])
-						elif i > 0 and i < self.total_sewers - 1:
+						elif i > 0 and i <= self.total_sewers - 1:
 							self.walk(self.sewer_row_locations[i+1], self.sewer_col_locations[i+1])
-
 				return True
 			else:
 				return False

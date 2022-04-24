@@ -31,9 +31,8 @@ def test():
 def main():
 	m = Maze()
 	m.build_grid()
-	m.print_info()
 	m.start()
-	m.print_info()
+	m.print_final()
 
 if __name__ == "__main__":
 	main()
