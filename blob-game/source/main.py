@@ -34,7 +34,6 @@ def main():
 	m.print_info()
 	m.start()
 	m.print_info()
-	
 
 if __name__ == "__main__":
 	main()
