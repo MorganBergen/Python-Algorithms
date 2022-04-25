@@ -22,7 +22,12 @@ def test():
 	print(f"total time in seconds: ", nanosec_to_sec(end_time-start_time))
 
 def main():
-	morgan = Stack()
+	cards = Stack()
+	print(f"is empty? {cards.is_empty()}")
+	cards.push('queen')
+	cards.push('jack')
+	cards.push('joker')
+	print(f"is empty? {cards.is_empty()}")
 
 if __name__ == "__main__":
 	main()
