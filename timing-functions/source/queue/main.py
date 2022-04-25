@@ -1,11 +1,15 @@
+'''
+in this lab we will time various methods from data structures we've made so far save those times
+plot them to see if they match the theoretical expectations
+'''
+
 import time
-from stack import Stack
 
 def nanosec_to_sec(ns):
 	billion = 1000000000 # one thousand million
 	return (ns/billion)
 
-def test():
+def main():
 	print("beginning the timing code...")
 	num_iterations = 100000000 # one hundred million
 	start_time = time.process_time_ns()
@@ -21,9 +25,13 @@ def test():
 	print(f"total time in nano seconds: ", end_time-start_time)
 	print(f"total time in seconds: ", nanosec_to_sec(end_time-start_time))
 
-def main():
-	morgan = Stack()
-
 if __name__ == "__main__":
 	main()
+
+
+
+
+
+
+
 

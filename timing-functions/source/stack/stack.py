@@ -1,31 +1,20 @@
 
-from Node import node
-
 class Stack:
-
+	
 	def __init__(self):
 		self.top = None
-	
+		
 	def push(self, data):
 		return None
 		
 	def pop(self):
 		return None
 	
-	def peak(self):
+	def peek(self):
 		return None
 		
 	def is_empty(self):
-		return None
-		
-
-
-
-
-
-
-
-
-
-
-
+		if self.top == None:
+			return True
+		else:
+			return False
