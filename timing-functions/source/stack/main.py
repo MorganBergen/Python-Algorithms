@@ -25,9 +25,26 @@ def main():
 	cards = Stack()
 	print(f"is empty? {cards.is_empty()}")
 	cards.push('queen')
+	try:
+		print(f"peek at top? {cards.peek()}")
+	except RuntimeError as e:
+		print(e)
 	cards.push('jack')
+	try:
+		print(f"peek at top? {cards.peek()}")
+	except RuntimeError as e:
+		print(e)
 	cards.push('joker')
+	try:
+		print(f"peek at top? {cards.peek()}")
+	except RuntimeError as e:
+		print(e)
 	print(f"is empty? {cards.is_empty()}")
+	
+	
+	
+		
+	
 
 if __name__ == "__main__":
 	main()

@@ -7,7 +7,6 @@ class Stack:
 		self._top = None
 		
 	def push(self, data):
-		
 		if self.is_empty():
 			self._top = Node(data)
 		else:
@@ -17,9 +16,12 @@ class Stack:
 		
 	def pop(self):
 		return None
-	
+			
 	def peek(self):
-		return None
+		if self.is_empty():
+			raise RuntimeError("error: cannot peak on an empty stack")
+		else:
+			return (self._top.data)
 		
 	def is_empty(self):
 		if self._top == None:
@@ -29,7 +31,6 @@ class Stack:
 
 
 '''
-
 
 [h]
 
