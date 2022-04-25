@@ -5,16 +5,17 @@ class Stack:
 	
 	def __init__(self):
 		self._top = None
+		self.size = 0
 		
 	def push(self, data):
 		if self.is_empty():
 			self._top = Node(data)
-			print(f"[{self._top.data}] <- pushed")
+			self.size += 1
 		else:
 			new_node = Node(data)
 			new_node.next = self._top
 			self._top = new_node
-			print(f"[{self._top.data}] <- pushed")
+#			print(f"[{self._top.data}] <- pushed")
 		
 	def pop(self):
 		if self.is_empty():

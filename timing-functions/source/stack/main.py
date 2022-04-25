@@ -25,29 +25,22 @@ def test_pop(p_stack):
 	print("beginning the timing code...")
 	start_time = time.process_time_ns()
 	
-	p_stack.pop()
+	print(f"popped {p_stack.pop()} from the stack")
 		
 	end_time = time.process_time_ns()
 	print(f"total time in nano seconds: ", end_time-start_time)
 	print(f"total time in seconds: ", nanosec_to_sec(end_time-start_time))
 
 
-def push_amount(p_stack, amount):
-	for i in range(amount):
-		p_stack.push(i)
-
-
 def main():
 
 	pile = Stack()
-	
-	for i in range(10):
-		pile.push(i*1000)
 		
+	for i in range(10):
+		for j in range(1000):
+			pile.push(j)
 		test_pop(pile)
-	
-	
-	
+		print()
 
 if __name__ == "__main__":
 	main()
@@ -75,6 +68,7 @@ I would do the following:
 
 5. Repeat these steps, increasing the size by 1000 each time until I've recorded a time for a stack with 100,000 elements in it
 '''
+
 	
 	
 	
