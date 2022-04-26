@@ -21,10 +21,10 @@ class Stack:
 		if self.is_empty():
 			raise RuntimeError("error: cannot pop on an empty stack")
 		else:
-			old = self._top.data
+			old_node = self._top.data
 			self._top = self._top.next
 			self.size = self.size - 1
-			return (old)
+			return (old_node)
 
 	def peek(self):
 		if self.is_empty():

@@ -11,13 +11,11 @@ class Stack:
 		if self.is_empty():
 			self._top = Node(data)
 			self.size += 1
-#			print(f"[{self._top.data}] <- pushed")
 		else:
 			new_node = Node(data)
 			new_node.next = self._top
 			self._top = new_node
 			self.size += 1
-#			print(f"[{self._top.data}] <- pushed")
 		
 	def pop(self):
 		if self.is_empty():
@@ -25,7 +23,6 @@ class Stack:
 		else:
 			old = self._top.data
 			self._top = self._top.next
-			print(f"[{old}] -> popped")
 			self.size = self.size - 1
 			return (old)
 			
@@ -40,25 +37,3 @@ class Stack:
 			return True
 		else:
 			return False
-
-
-'''
-
-[h] <- Node(h)
- 
-[x] <- top
-[y]
-[z]
-[w]
-[u]
-
-temp = self.top
-temp = [x]
-	   [y]
-	   [z]
-	   [w]
-	   [u]
-self.top = [h]
-self.top.next = temp
-
-'''
