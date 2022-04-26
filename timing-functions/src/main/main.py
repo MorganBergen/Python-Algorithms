@@ -4,6 +4,7 @@ from two import Two
 from three import Three
 from four import Four
 from five import Five
+from six import Six
 
 def operationOne():
     test = One()
@@ -25,11 +26,13 @@ def opertionFour():
     test.execute()
     test.fileIO("four.txt")
 
-def main():
+def operationFive():
    test = Five()
    test.execute()
    test.fileIO("five.txt")
-    
+
+def main():
+    test = Six()
     
 
 

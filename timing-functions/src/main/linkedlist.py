@@ -11,13 +11,6 @@ class LinkedList:
     def is_empty(self):
         return (self.head == None)
 
-    def get_node_at(self, index):
-        self.iterations_for_get = 0
-        target = self.head
-        for i in range(index):
-            target = target.next
-            self.iterations_for_get += 1
-        return target
 
     def insert(self, index, data):
         new_node = Node(data)
@@ -79,3 +72,13 @@ class LinkedList:
             else:
                 print(f"{cur.data} -> ", end="")   
             cur = cur.next
+
+    
+
+    def get_node_at(self, index):
+        self.iterations_for_get = 0
+        target = self.head
+        for i in range(index):
+            target = target.next
+            self.iterations_for_get += 1
+        return target
