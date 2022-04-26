@@ -27,7 +27,7 @@ def main():
     print()
     x = Four()
     x.execute()
-    # x.fileIO("four.txt")
+    x.fileIO("four.txt")
     
 
 

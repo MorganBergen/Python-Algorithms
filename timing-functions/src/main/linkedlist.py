@@ -81,17 +81,3 @@ class LinkedList:
             else:
                 print(f"{cur.data} -> ", end="")   
             cur = cur.next
-
-# 	def print_list(self):
-# 		current = self.head
-# 		if self.is_empty():
-# 			print("list is empty")
-# 		counter = 0
-# 		while counter < self.length:
-# #			print(f"{counter} -> ", end="")
-# 			counter = counter + 1
-# 		print()
-# 		while current != None:
-# 			print(f"{current.data} -> ", end="")
-# 			current = current.next
-# #		print(f"\nlength = {self.length}")
