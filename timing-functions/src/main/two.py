@@ -1,10 +1,27 @@
 import time
 from stack import Stack
 
-class OperationOne:
+class Two:
 
     def __init__(self):
         self.pile = Stack()
+        self.time = []
+        self.n = []
+
+    def fileIO(self):
+
+        f = open("two.txt", 'w')
+
+        f.writelines("time in seconds\n")
+        for i in range(len(self.time)):
+            f.writelines(self.time[i])
+            f.writelines("\n")
+        
+        f.writelines("\nsize of n\n")
+        for i in range(len(self.n)):
+            f.writelines(self.n[i])
+            f.writelines("\n")
+        f.close()
     
     def push_n(self, p_stack, n):
         for i in range(n):
@@ -15,14 +32,15 @@ class OperationOne:
             n = (i+1)*1000
             self.push_n((self.pile), n)
             print(f"pushed {self.pile.size} nodes to the stack")
-            print(f"stack size = {self.pile.size}")
+            print(f"current size = {self.pile.size}")
+            cur = self.pile.size
             print(f"_____________________________________________")
-            self.test_n(self.pile, 1)
+            self.test_n(self.pile, self.pile.size)
             print(f"_____________________________________________")
-            print(f"popped {1} node off the stack")
-            print(f"stack size = {self.pile.size}")
+            print(f"popped {cur} nodes off the stack")
+            print(f"updated size = {self.pile.size}")
             self.pile = Stack()
-
+            print("\n")
 
     def nanosec_to_sec(self, ns):
         billion = 1000000000
@@ -40,5 +58,9 @@ class OperationOne:
             print(e)
         
         end_time = time.process_time_ns()
+        print(f"total iterations: ", num_iterations)
         print(f"total time in nano seconds: ", end_time-start_time)
         print(f"total time in seconds: ", self.nanosec_to_sec(end_time-start_time))
+        self.time.append(str(self.nanosec_to_sec(end_time-start_time)))
+        # self.time.append(str(end_time-start_time))
+        self.n.append(str(num_iterations))
