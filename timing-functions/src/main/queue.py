@@ -5,6 +5,7 @@ class Queue:
     def __init__(self):
         self.front = None
         self.back = None
+        self.size = 0
 
     def is_empty(self):
         return(self.front == None and self.back == None)
@@ -30,6 +31,7 @@ class Queue:
             self.back.next = new_back
             self.back = new_back
             self.back.next = None
+        self.size += 1
 
     def dequeue(self):
         if self.is_empty():
@@ -38,7 +40,8 @@ class Queue:
         elif self.front.next == None:
             self.front = None
             self.back = None
-        
+            self.size -= 1        
         else:
             self.front = self.front.next
+            self.size -= 1
             return (self.front.data)

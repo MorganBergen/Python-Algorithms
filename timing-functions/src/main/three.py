@@ -4,18 +4,12 @@ from queue import Queue
 class Three:
     def __init__(self):
         self.line = Queue()
+        
 
-    def basic(self):
-        print(f"is the line empty? ", end="")
-        print(self.line.is_empty())
-        self.line.enqueue("morgan")
-        self.line.enqueue("maha")
-        self.line.enqueue("bergen")
-        print(f"new front {self.line.dequeue()}")
-        print(f"is the line empty? ", end="")
-        print(self.line.is_empty())
-        print(f"front -> [{self.line.peek_f()}]")
-        print(f"[{self.line.peek_b()}] <- back")
+
+
+
+
 
  
 
@@ -62,4 +56,15 @@ def main():
 if __name__ == "__main__":
 	main()
 
+    def basic(self):
+        print(f"is the line empty? ", end="")
+        print(self.line.is_empty())
+        self.line.enqueue("morgan")
+        self.line.enqueue("maha")
+        self.line.enqueue("bergen")
+        print(f"new front {self.line.dequeue()}")
+        print(f"is the line empty? ", end="")
+        print(self.line.is_empty())
+        print(f"front -> [{self.line.peek_f()}]")
+        print(f"[{self.line.peek_b()}] <- back")
 '''
