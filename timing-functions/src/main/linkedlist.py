@@ -5,20 +5,18 @@ class LinkedList:
     def __init__(self):
         self.head = None
         # self._head = None change to this when you are done
+        self.iterations_for_get = 0
         self.size = 0
 
     def is_empty(self):
         return (self.head == None)
 
-    
-
-
-    
-
     def get_node_at(self, index):
+        self.iterations_for_get = 0
         target = self.head
         for i in range(index):
             target = target.next
+            self.iterations_for_get += 1
         return target
 
     def insert(self, index, data):
@@ -71,7 +69,7 @@ class LinkedList:
     def get_data(self, index):
         return(self.get_node_at(index).data)
 
-    def print(self):
+    def print_list(self):
         cur = self.head
         if self.is_empty():
             print("list is empty")

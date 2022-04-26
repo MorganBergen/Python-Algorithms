@@ -20,14 +20,16 @@ def operationThree():
     test.execute()
     test.fileIO()
 
-def opertionFive():
-    test = Five()
+def opertionFour():
+    test = Four()
+    test.execute()
+    test.fileIO("four.txt")
 
 def main():
-    print()
-    x = Four()
-    x.execute()
-    x.fileIO("four.txt")
+   test = Five()
+   test.execute()
+   test.fileIO("five.txt")
+    
     
 
 
