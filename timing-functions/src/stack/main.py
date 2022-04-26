@@ -23,10 +23,13 @@ def test():
 
 def test_pop(p_stack):
 	print("beginning the timing code...")
+	num_iterations = 1 # one
 	start_time = time.process_time_ns()
 	
+	
 	try:
-		print(f"popped {p_stack.pop()} from the stack")
+		for i in range(num_iterations):
+			p_stack.pop()
 	except RuntimeError as e:
 		print(e)
 		
@@ -39,13 +42,20 @@ def main():
 	
 	pile = Stack()
 		
-	for i in range(10):
-		for j in range(i*1000):
-			pile.push(j)
-		
+#	for i in range(10):
+#		for j in range((i+1)*1000):
+#			pile.push(j)
+#		test_pop(pile)
+#		print()
+
+	i = 1
+	for i in range(11):
+		j = 1
+		for j in range(1001):
+			pile.push(j*i)
 		test_pop(pile)
-		print()
-		
+	print(f"[{pile.peek()}] <- top")
+			
 
 
 if __name__ == "__main__":
