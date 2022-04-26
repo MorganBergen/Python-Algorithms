@@ -17,6 +17,6 @@ def operationTwo():
 def main():
     
     test = Three()
-    
+    test.execute()
 
 main()
