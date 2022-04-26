@@ -9,9 +9,7 @@ class Two:
         self.n = []
 
     def fileIO(self):
-
         f = open("two.txt", 'w')
-
         f.writelines("time in seconds\n")
         for i in range(len(self.time)):
             f.writelines(self.time[i])

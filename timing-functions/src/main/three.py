@@ -5,6 +5,8 @@ import time
 class Three:
     def __init__(self):
         self.line = Queue()
+        self.time = []
+        self.n = []
 
     def enqueue_n(self, p_queue, n):
         for i in range(n):
@@ -15,10 +17,11 @@ class Three:
             n = (i+1)*1000
             self.enqueue_n(self.line, n)
             print(f"enqueued {self.line.size} nodes to the queue")
+            cur = self.line.size
             print(f"__________________________________________")
-            self.test_dequeue_n(self.line, self.line.size)
+            self.test_dequeue_n(self.line, cur)
             print(f"__________________________________________")
-            print(f"dequeued {self.line.size} nodes to the queue")
+            print(f"dequeued {cur} nodes to the queue")
             self.line = Queue()
             print('\n')
 
@@ -39,12 +42,27 @@ class Three:
         print(f"total iterations: ", num_iterations)        
         print(f"total time in nano seconds: ", end_time-start_time)
         print(f"total time in seconds: ", self.nanosec_to_sec(end_time-start_time))
-        return None
+        self.time.append(str(self.nanosec_to_sec(end_time-start_time)))
+        self.n.append(str(num_iterations))
 
     def nanosec_to_sec(self, ns):
         billion = 1000000000
         return (ns/billion)
     
+
+    def fileIO(self):
+        f = open("three.txt", 'w')
+        f.writelines("time in seconds\n")
+        for i in range(len(self.time)):
+            f.writelines(self.time[i])
+            f.writelines("\n")
+
+        f.writelines("\nsize of n\n")
+        for i in range(len(self.n)):
+            f.writelines(self.n[i])
+            f.writelines("\n")
+        f.close()
+
     '''
     def test_n(self, p_queue, n):
         print("beginning the timing code...")
@@ -71,8 +89,6 @@ class Three:
 
     '''
 
-
-
 '''
 1.  enqueue 1,000 elements
 2.  record time to perform dequeue 1,000 elements
@@ -83,14 +99,7 @@ class Three:
 4.  record time to perform dequeue 100,000 elements
 '''
 
-
-
 '''
-
-
-
-
-
 def main():
 	print("beginning the timing code...")
 	num_iterations = 100000000 # one hundred million
@@ -110,15 +119,4 @@ def main():
 if __name__ == "__main__":
 	main()
 
-    def basic(self):
-        print(f"is the line empty? ", end="")
-        print(self.line.is_empty())
-        self.line.enqueue("morgan")
-        self.line.enqueue("maha")
-        self.line.enqueue("bergen")
-        print(f"new front {self.line.dequeue()}")
-        print(f"is the line empty? ", end="")
-        print(self.line.is_empty())
-        print(f"front -> [{self.line.peek_f()}]")
-        print(f"[{self.line.peek_b()}] <- back")
 '''
