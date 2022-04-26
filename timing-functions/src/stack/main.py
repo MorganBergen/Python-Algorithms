@@ -54,7 +54,8 @@ def main():
 		for j in range(1001):
 			pile.push(j*i)
 		test_pop(pile)
-	print(f"[{pile.peek()}] <- top")
+		print(f"[{pile.peek()}] <- top")
+		print()
 			
 
 
