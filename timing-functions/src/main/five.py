@@ -10,11 +10,6 @@ class Five:
         self.time_nanosec = []
         self.n = []
 
-    def insert_n(self, p_list, n):
-        for i in range(n):
-            p_list.insert(i, i)
-
-
     def execute(self):
         count = 0
         for i in range(100):

@@ -73,8 +73,6 @@ class LinkedList:
                 print(f"{cur.data} -> ", end="")   
             cur = cur.next
 
-    
-
     def get_node_at(self, index):
         self.iterations_for_get = 0
         target = self.head
