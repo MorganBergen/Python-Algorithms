@@ -41,21 +41,18 @@ def test_pop(p_stack):
 def main():
 	
 	pile = Stack()
-		
-#	for i in range(10):
-#		for j in range((i+1)*1000):
-#			pile.push(j)
-#		test_pop(pile)
-#		print()
 
-	i = 1
-	for i in range(11):
-		j = 1
-		for j in range(1001):
-			pile.push(j*i)
-		test_pop(pile)
-		print(f"[{pile.peek()}] <- top")
-		print()
+	x = 1
+	for x in range(11):
+		y = 1
+		if x == 0:
+			pass
+		else:
+			for y in range(1001):
+				pile.push(y*x)
+			test_pop(pile)
+			print(f"[{pile.peek()}] <- top")
+			print()
 			
 
 
