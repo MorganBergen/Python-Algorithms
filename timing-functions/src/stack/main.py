@@ -25,7 +25,10 @@ def test_pop(p_stack):
 	print("beginning the timing code...")
 	start_time = time.process_time_ns()
 	
-	print(f"popped {p_stack.pop()} from the stack")
+	try:
+		print(f"popped {p_stack.pop()} from the stack")
+	except RuntimeError as e:
+		print(e)
 		
 	end_time = time.process_time_ns()
 	print(f"total time in nano seconds: ", end_time-start_time)
@@ -33,14 +36,17 @@ def test_pop(p_stack):
 
 
 def main():
-
+	
 	pile = Stack()
 		
 	for i in range(10):
-		for j in range(1000):
+		for j in range(i*1000):
 			pile.push(j)
+		
 		test_pop(pile)
 		print()
+		
+
 
 if __name__ == "__main__":
 	main()
