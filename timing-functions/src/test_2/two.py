@@ -48,7 +48,7 @@ class Two:
     
      
     '''
-    @pre	    One() and execute() must have been called
+    @pre	    Two() and execute() must have been called
     @post		self.pile have pushed n amount of elements onto the stack
     @param		p_stack, n
     @raises		None
@@ -58,6 +58,13 @@ class Two:
         for i in range(n):
             p_stack.push(i)
 
+    '''
+    @pre	    Two() must have been already called
+    @post		time complexity statistics will be recorded for 100,000 pop()
+    @param		None
+    @raises		None
+    @returns	None
+    '''
     def execute(self):
         for i in range(100):
             n = (i+1)*1000
@@ -73,10 +80,24 @@ class Two:
             self.pile = Stack()
             print("\n")
 
+    '''
+    @pre	    test_n() must have already been called
+    @post		converts nano seconds to seconds
+    @param		ns
+    @raises		None
+    @returns	ns/billion
+    '''
     def nanosec_to_sec(self, ns):
         billion = 1000000000
         return (ns/billion)    
 
+    '''
+    @pre	    One() and execute() must have already been called
+    @post	    lists n and time will be initialized with time complexity statistics
+    @param		p_stack, n
+    @raises		RuntimeError if there is an attempt to pop() an empty stack
+    @returns	None
+    '''
     def test_n(self, p_stack, n):
         print("beginning the timing code...")
         num_iterations = n
@@ -93,5 +114,4 @@ class Two:
         print(f"total time in nano seconds: ", end_time-start_time)
         print(f"total time in seconds: ", self.nanosec_to_sec(end_time-start_time))
         self.time.append(str(self.nanosec_to_sec(end_time-start_time)))
-        # self.time.append(str(end_time-start_time))
         self.n.append(str(num_iterations))

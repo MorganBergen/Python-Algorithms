@@ -52,7 +52,7 @@ def operationTwo():
 
 '''
 @pre	    None
-@post		generates a file which contains the time complexity of the queue's enqueue
+@post		will test the time complexity of enqueue() for ADT queue
 @param		None
 @raises		None
 @returns	None
@@ -60,30 +60,51 @@ def operationTwo():
 def operationThree():
     test = Three()
     test.execute()
-    test.fileIO("three_statistics.txt")
+    test.generate_statistics("test_3/statistics.txt")
 
+'''
+@pre	    None
+@post		will test the time complexity of get_entry(0) for ADT linkedList
+@param		None
+@raises		None
+@returns	None
+'''
 def operationFour():
     test = Four()
     test.execute()
-    test.fileIO("four_statistics.txt")
+    test.generate_statistics("test_4/statistics.txt")
 
+'''
+@pre	    None
+@post		will test the time complexity of get_entry(self.list.size-1) for ADT linkedList
+@param		None
+@raises		None
+@returns	None
+'''
 def operationFive():
    test = Five()
    test.execute()
-   test.fileIO("five_statistics.txt")
+   test.generate_statistics("test_5/statistics.txt")
 
+'''
+@pre	    None
+@post		will test the time complexity of printing all elements in the ADT linkedList using get_entry()
+@param		None
+@raises		None
+@returns	None 
+'''
 def operationSix():
     test = Six()
     test.execute()
-    test.generate_stats("six_statistics.txt")
+    test.generate_statistics("test_6/statistics.txt")
     
 def main():
     operationOne()
-    # operationTwo()
-    # operationThree()
-    # operationFour()
-    # operationFive()
-    # operationSix()
+    operationTwo()
+    operationThree()
+    operationFour()
+    operationFive()
+    operationSix()
 
 
 if __name__ == "__main__":
