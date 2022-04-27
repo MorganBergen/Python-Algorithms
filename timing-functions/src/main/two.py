@@ -1,6 +1,8 @@
 import time
 from stack import Stack
 
+# Operation 2:  Popping all items from a stack
+
 class Two:
 
     def __init__(self):

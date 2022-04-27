@@ -11,49 +11,34 @@ class Six:
         self.time_nanosec = []
         self.n = []
 
-
-
-    def print_it(self):
-        for i in range(10):
-            for j in range(100):
-                self.list.insert(0, count)
-                count += 1
-
-
-
-
-
-
-
     def execute(self):
         count = 0
         for i in range(100):
             for j in range(1000):
                 self.list.insert(0, count)
                 count += 1
-            print(f"_____________list size = {self.list.size}_________________")
-            
+            print(f"__________________list size = {self.list.size}_______________")
+            self.test_print_n(self.list, self.list.size)
             print(f"_______________________________________________\n")
 
-
-
-
-
-
-    def test_get_data_n(self, p_list, n):
+    def test_print_n(self, p_list, n):
         print("beginning the timing code...")
         num_iterations = n
         start_time = time.process_time_ns()
 
-        print(f"get_data at index {num_iterations} = {p_list.get_data(num_iterations)}")
 
-        end_time = time.process_time_ns()
-        print(f"total iterations: ", num_iterations)        
+        for i in range(num_iterations):
+            if i == num_iterations - 1:
+                print(f"{p_list.get_data(i)} -> • ")
+            else:
+                print(f"{p_list.get_data(i)} -> ", end="")
+    
+        end_time = time.process_time_ns()       
         print(f"total time in nano seconds: ", end_time-start_time)
         print(f"total time in seconds: ", self.nanosec_to_sec(end_time-start_time))
         self.time_nanosec.append(str(end_time-start_time))
         self.time_sec.append(str(self.nanosec_to_sec(end_time-start_time)))
-        self.n.append(str(num_iterations+1))
+        self.n.append(str(num_iterations))
 
     def nanosec_to_sec(self, ns):
         billion = 1000000000

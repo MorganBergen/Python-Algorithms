@@ -33,7 +33,7 @@ def operationFive():
 
 def main():
     test = Six()
-    
-
+    test.execute()
+    test.generate_stats("six.txt")
 
 main()

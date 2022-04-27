@@ -80,3 +80,5 @@ class LinkedList:
             target = target.next
             self.iterations_for_get += 1
         return target
+
+
