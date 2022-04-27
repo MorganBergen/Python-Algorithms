@@ -1,3 +1,9 @@
+'''
+@file		three.py
+@author		Morgan Bergen
+@date		
+@brief	
+'''
 
 from queue import Queue
 import time

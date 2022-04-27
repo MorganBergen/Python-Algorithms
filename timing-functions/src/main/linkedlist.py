@@ -1,3 +1,9 @@
+'''
+@file		linkedList.py
+@author		Morgan Bergen
+@date		
+@brief	
+'''
 
 from node import Node
 

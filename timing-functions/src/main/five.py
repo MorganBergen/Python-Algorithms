@@ -1,3 +1,10 @@
+'''
+@file		main.py
+@author		Morgan Bergen
+@date		
+@brief	
+'''
+
 from linkedlist import LinkedList
 import time
 
@@ -9,7 +16,7 @@ class Five:
         self.time_sec = []
         self.time_nanosec = []
         self.n = []
-
+        
     def execute(self):
         count = 0
         for i in range(100):

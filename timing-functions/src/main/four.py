@@ -1,3 +1,10 @@
+'''
+@file		main.py
+@author		Morgan Bergen
+@date		
+@brief	
+'''
+
 from linkedlist import LinkedList
 import time
 
@@ -45,7 +52,7 @@ class Four:
 
     def fileIO(self, file_name):
         f = open(file_name, 'w')
-        f.writelines("time in nano seconds\n")
+        f.writelines("time in nanoseconds\n")
         for i in range(len(self.time)):
             f.writelines(self.time[i])
             f.writelines("\n")

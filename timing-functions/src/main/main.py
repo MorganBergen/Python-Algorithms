@@ -1,3 +1,9 @@
+'''
+@file		main.py
+@author		Morgan Bergen
+@date		
+@brief	
+'''
 
 from one import One
 from two import Two
@@ -6,6 +12,14 @@ from four import Four
 from five import Five
 from six import Six
 
+
+'''
+@pre		None
+@post		None
+@param		None
+@raises		None
+@returns	None
+'''
 def operationOne():
     test = One()
     test.execute()
