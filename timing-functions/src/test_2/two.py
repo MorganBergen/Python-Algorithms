@@ -1,17 +1,40 @@
+'''
+@file		two.py
+@author		Morgan Bergen
+@date		April 27 2022
+@brief	    these is the implementation details that will test the time complexity of all possible pop() for ADT stack
+            by utilizing this class the following will happen
+            1.  a stack will push() 1,000 elements onto the stack
+            2.  a record of the time to perform a pop() of size n with the stack will be stored into a list
+            3.  step 1 and 2 will be repeated, increasing the size by 1,000 each time untill the stack has pushed 100,000 times
+'''
+
 import time
 from stack import Stack
 
-# Operation 2:  Popping all items from a stack
-
 class Two:
 
+    '''
+    @pre	    constructor must have been called
+    @post		member variables will have been initialized to their defaults, which will be empty data structures
+    @param		None
+    @raises		None
+    @returns	None
+    '''
     def __init__(self):
         self.pile = Stack()
         self.time = []
         self.n = []
 
-    def fileIO(self):
-        f = open("two.txt", 'w')
+    '''
+    @pre	    Two() and execute() must have been called
+    @post		will generate a file holding all of the time complexity statistics for n from 1,000 - 100,000
+    @param		p_name
+    @raises		None
+    @returns	None
+    '''
+    def generate_statistics(self, p_name):
+        f = open(p_name, 'w')
         f.writelines("time in seconds\n")
         for i in range(len(self.time)):
             f.writelines(self.time[i])
@@ -23,6 +46,14 @@ class Two:
             f.writelines("\n")
         f.close()
     
+     
+    '''
+    @pre	    One() and execute() must have been called
+    @post		self.pile have pushed n amount of elements onto the stack
+    @param		p_stack, n
+    @raises		None
+    @returns	None
+    '''
     def push_n(self, p_stack, n):
         for i in range(n):
             p_stack.push(i)

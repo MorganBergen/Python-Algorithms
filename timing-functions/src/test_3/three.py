@@ -5,6 +5,7 @@
 @brief	
 '''
 
+from importlib.resources import path
 from queue import Queue
 import time
 
@@ -56,8 +57,8 @@ class Three:
         return (ns/billion)
     
 
-    def fileIO(self):
-        f = open("three.txt", 'w')
+    def fileIO(self, p_name):
+        f = open(p_name, 'w')
         f.writelines("time in seconds\n")
         for i in range(len(self.time)):
             f.writelines(self.time[i])
@@ -68,61 +69,3 @@ class Three:
             f.writelines(self.n[i])
             f.writelines("\n")
         f.close()
-
-    '''
-    def test_n(self, p_queue, n):
-        print("beginning the timing code...")
-	    num_iterations = 100000000 # one hundred million
-	    start_time = time.process_time_ns()
-
-	        # loop that does nothing but repeat, hence the _ variable and the keywork pass
-	        # which just means do nothing
-
-	    for _ in range(num_iterations):
-		    pass
-
-	    end_time = time.process_time_ns()
-	
-	    print(f"total time in nano seconds: ", end_time-start_time)
-	    print(f"total time in seconds: ", nanosec_to_sec(end_time-start_time))
-
-
- 
-
-    def nanosec_to_sec(self, ns):
-    	billion = 1000000000 # one thousand million
-    	# return(ns/billion)
-
-    '''
-
-'''
-1.  enqueue 1,000 elements
-2.  record time to perform dequeue 1,000 elements
-3.  enqueue 2,000 elements
-4.  record time to perform dequeue 2,000 elements
-...
-3.  enqueue 100,000 elements
-4.  record time to perform dequeue 100,000 elements
-'''
-
-'''
-def main():
-	print("beginning the timing code...")
-	num_iterations = 100000000 # one hundred million
-	start_time = time.process_time_ns()
-
-	# loop that does nothing but repeat, hence the _ variable and the keywork pass
-	# which just means do nothing
-
-	for _ in range(num_iterations):
-		pass
-
-	end_time = time.process_time_ns()
-	
-	print(f"total time in nano seconds: ", end_time-start_time)
-	print(f"total time in seconds: ", nanosec_to_sec(end_time-start_time))
-
-if __name__ == "__main__":
-	main()
-
-'''
