@@ -2,42 +2,7 @@
 @file		linkedlist.py
 @author		Morgan Bergen
 @date		April 27 2022
-@brief		This is a contemporary node based implementation of this linkedlist data structure.  The following outlines the general functionality of 			each memeber method of this class.
-
-def __init__(self)
-- Initializes an empty linkedlist with a length of 0.
-
-def get_length(self)
-- Return length of the list
-
-def insert(self, index, entry)
-- Insert the entry at the index.
-- Valid indices range from 0 to length inclusively.
-- Inserting at index=0 inserts at the front.
-- Inserting at index=length adds to the back.
-- Each insert increases the length by 1.
-
-def remove(self, index)
-- Removes the entry at the index.
-- Valid indices range from 0 to length - 1 inclusively.
-- Each remove decreases the length by 1.
-
-def is_empty(self)
-- Returns true if self._front refers to nothing.
-
-def get_node_at(self, index)
-- traverses through the linked list to a given index
-- returns a reference to a node at that given parameterized index
-
-def get_entry(self, index)
-- Return the entry at index, raises a RuntimeError otherwise.
-
-def clear(self)
-- Empties the list
-
-def set_entry(self, index, entry)
-- Sets the entry at index, raises a RuntimeError otherwise.
-- Even if successful, the length remains the same.
+@brief		This is a contemporary node based implementation of a linkedList data structure.
 '''
 
 from node import Node
@@ -70,9 +35,13 @@ class LinkedList:
 
 	'''
 	@pre		LinkedList() object must be allocated from a seperate module
-	@post
-	@param		None
-	@raises		None
+	@post		will insert an entry at a specified index
+				valid indices range from 0 to size inclusively
+				inserting at index = 0 inserts a new node at the front of the list
+				inserting at index = size adds a new node to the back of the list
+				each insert increments the size by 1.
+	@param		index, data
+	@raises		IndexError if the index is out of range
 	@returns	None
 	'''
     def insert(self, index, data):
@@ -97,10 +66,12 @@ class LinkedList:
             raise IndexError("error: index out of range")
 
 	'''
-	@pre		LinkedList() object must be allocated from a seperate module
-	@post
-	@param		None
-	@raises		None
+	@pre		LinkedList() object must be allocated from a seperate module and the size of the list must be 1
+	@post		removes an entry at the specified index
+				valid indices range from 0 to size - 1 inclusively.
+				each remove decrements the size by 1.
+	@param		index
+	@raises		IndexError, RuntimeError
 	@returns	None
 	'''
     def remove(self, index):
@@ -122,6 +93,14 @@ class LinkedList:
                 before.next = after
             self.size -= 1
 
+	'''
+	@pre		LinkedList() object must be allocated from a seperate module
+				there also must be at least one node in the list / is_empty() must return False
+	@post		empties the list by refering the head to None
+	@param		None
+	@raises		RuntimeError
+	@returns	None
+	'''
     def clear(self):
         if self.is_empty():
             raise RuntimeError("error: linkedList is already empty")
@@ -129,9 +108,25 @@ class LinkedList:
             self.head = None
         self.size = 0
 
+	'''
+	@pre		LinkedList() construcrtor must have been called
+				there also must be at least one node in the list / is_empty() must return False
+	@post		None
+	@param		index
+	@raises		None
+	@returns	self.get_node_at(index).data
+	'''
     def get_data(self, index):
         return(self.get_node_at(index).data)
 
+	'''
+	@pre		LinkedList() construcrtor must have been called
+				there also must be at least one node in the list / is_empty() must return False
+	@post		None, there will simply be a print out to the consol of each element in the list
+	@param		None
+	@raises		None
+	@returns	None
+	'''
     def print_list(self):
         cur = self.head
         if self.is_empty():
@@ -140,9 +135,18 @@ class LinkedList:
             if cur.next == None:
                 print(f"{cur.data} -> • ")
             else:
-                print(f"{cur.data} -> ", end="")   
+                print(f"{cur.data} -> ", end="")
             cur = cur.next
 
+	'''
+	@pre		LinkedList() construcrtor must have been called
+				there also must be at least one node in the list / is_empty() must return False
+	@post		None, this is simply a traversal method to retrive a reference to a node
+				at a given specified index position
+	@param		index
+	@raises		None
+	@returns	target
+	'''
     def get_node_at(self, index):
         self.iterations_for_get = 0
         target = self.head
@@ -150,5 +154,6 @@ class LinkedList:
             target = target.next
             self.iterations_for_get += 1
         return target
+
 
 
