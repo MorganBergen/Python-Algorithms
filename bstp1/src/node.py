@@ -5,6 +5,3 @@ class Node:
         self.left = None
         self.right = None
 
-'''
-storage class for creating binary tree nodes
-'''

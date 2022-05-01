@@ -1,14 +1,18 @@
 
-from  node import Node
+# from  node import Node
+from tree import Tree
 
 def main():
-	root = Node(1)
-	root.left = Node(2)
-	root.right = Node(3)
+	tree = Tree()
+	tree.manualAdd(1)
+	tree.print_tree()
 	
-	print(f"	[{root.data}]")
-	print(f"	/ \	")
+	
+
+	
 	
 if __name__ == "__main__":
 	main()
 	
+
+
