@@ -28,8 +28,5 @@ class Tree:
 
     def __len__(self):
         return (self.size)
-
-    def insert(self, subtree, value):
-        if subtree == None:
-            subtree = Node(self, value)
-            
+    
+#	def insert(self, data)
