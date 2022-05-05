@@ -10,21 +10,24 @@ class Tree:
 	
 	# visit, left, right
 	def preorder(self, subtree):
-		print(subtree.key)
-		self.preorder(subtree.left)
-		self.preorder(subtree.right)
+		if subtree != None:
+			print(subtree.key)
+			self.preorder(subtree.left)
+			self.preorder(subtree.right)
 	
 	# left, visit, right
 	def inorder(self, subtree):
-		self.inorder(subtree.left)
-		print(subtree.key)
-		self.inorder(subtree.right)
+		if subtree != None:
+			self.inorder(subtree.left)
+			print(subtree.key)
+			self.inorder(subtree.right)
 		
 	# left, right, visit
 	def postorder(self, subtree):
-		self.postorder(subtree.left)
-		self.postorder(subtree.right)
-		print(subtree.key)
+		if subtree != None:
+			self.postorder(subtree.left)
+			self.postorder(subtree.right)
+			print(subtree.key)
 		
 	def __contains__(self, key):
 		return (self._search(self.root, key) != None)
