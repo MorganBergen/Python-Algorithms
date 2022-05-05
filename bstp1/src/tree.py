@@ -1,4 +1,5 @@
 
+from re import sub
 from node import Node
 
 class Tree:
@@ -10,56 +11,61 @@ class Tree:
         return self.size
 
     def __iter__(self):
-        return self.inorderTrav(self.root)
+        return self.inorder(self.root)
     
-    def inorderTrav(self, subtree):
+    def inorder(self, subtree):
         if subtree != None:
-            self.inorderTrav(subtree.left)
+            self.inorder(subtree.left)
             print(subtree.data)
-            self.inorderTrav(subtree.right)
+            self.inorder(subtree.right)
+
+    def preorder(self, subtree):
+        if subtree != None:
+            print(subtree.data)
+            self.inorder(subtree.left)
+            self.inorder(subtree.right)
     
-    def locate(self, subtree, target):
+    def postorder(self, subtree):
+        if subtree != None:
+            self.postorder(subtree.left)
+            self.postorder(subtree.right)
+            print(subtree.data)
 
-        if subtree == None:
-            return True
-        
-        elif target < subtree.key:
-            return self.locate(subtree.left, target)
-        
-        elif target > subtree.key:
-            return self.locate(subtree.right, target)
-
-        else:
-            return False
 
     def add(self, key, data):
-
-        if self.locate(self.root, key) == True:
-
+        if self.root == None:
+            self.root = Node(key, data)
+        elif self.root.key > key:      #check left
+            if self.root.left == None:
+                self.root.left = Node(key, data)
+            else:
+                self.rec_add(self.root.left, key, data)
+        elif self.root.key < key:       #check right
+            if self.root.right == None:
+                self.root.right = Node(key, data)
+            else:
+                self.rec_add(self.root.right, key, data)
         else:
-            rasie RuntimeError
-        node = self.locate(self.root, key)
-        
-        if node != None:
-            raise RuntimeError("cannot insert duplicate key value")
+            raise RuntimeError("No duplicates allowed")
+
+
+    def rec_add(self, cur_node, key, data):
+        if cur_node == None:
+            self.cur_node = Node(key, data)
         else:
-            self.root = self.insert(self.root, key, data)
-            self.size += 1
-            return True
+            if cur_node.key > key: 
+                if cur_node.left == None:
+                    cur_node.left = Node(key, data)
+                else:
+                    self.rec_add(cur_node.left, key, data)
+            
+            elif cur_node.key < key:
+                if cur_node.right == None:
+                    cur_node.right = Node(key, data)
+                else:
+                    self.rec_add(cur_node.right, key, data)
+                            
 
-    def insert(self, subtree, key, data):
-        if subtree == None:
-            subtree = Node(key, data)
-        
-        elif key < subtree.key:
-            subtree.left = self.insert(subtree.left, key, data)
-        
-        elif key > subtree.key:
-            subtree.right = self.insert(subtree.right, key, data)
-        
-        return subtree
-
-        
 
 
 
