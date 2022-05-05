@@ -3,7 +3,7 @@
 
 
 def add(self, entry):
-	
+
 	if self._root == None:
 		self._root = BNode(entry)
 	
