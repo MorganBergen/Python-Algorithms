@@ -1,5 +1,4 @@
 
-
 from node import Node
 
 class Tree:
@@ -7,42 +6,11 @@ class Tree:
         self.root = None
         self.size = 0
 
-    def add(self, data):
-        
-        if self.root == None:
-            self.root = Node(data)
-            print(f"root -> ", self.root.data)
-            self.size += 1
-        elif data > self.root.data:
-            if self.root.right == None:
-                self.root.right = Node(data)
-                print(self.root.right.data)
-            else:
-                print("rec_add")
-        
-            self.size += 1
+    def __len__(self):
+        return self.size
 
-        elif data < self.root.data:
-            if self.root.left == None:
-                self.root.left = Node(data)
-            else:
-                print("rec add")
-            self.size += 1
-        else:
-            raise RuntimeError("no duplicates allowed")
-
-    def print_tree(self):
-        print(f"	[{self.root.data}]")
-        print(f"	[{self.root.right.data}]")
-	    # print(f"	/ \	")
-	    # print(f"     [{self.root.data}]   [{self.root.right.data}]")
-
-
-    def preorderTrav(self, subtree):
-        if subtree != None:
-            print(subtree.data)
-            self.preorderTrav(subtree.left)
-            self.preorderTrav(subtree.right)
+    def __iter__(self):
+        return self.inorderTrav(self.root)
     
     def inorderTrav(self, subtree):
         if subtree != None:
@@ -50,25 +18,57 @@ class Tree:
             print(subtree.data)
             self.inorderTrav(subtree.right)
     
-    def postorderTrav(self, subtree):
-        if subtree != None:
-            self.postorderTrav(subtree.left)
-            self.postorderTrav(subtree.right)
-            print(subtree.data)
+    def search(self, subtree, target):
+        if subtree == None:
+            return None
+        
+        elif target < subtree.key:
+            return self.search(subtree.left)
+        
+        elif target > subtree.key:
+            return self.search(subtree.right)
+        
+        else:
+            return subtree
 
-    def __len__(self):
-        return (self.size)
+    def add(self, key, data):
+        node = self.search(self.root, key)
+        if node != None:
+            node = Node(key, data)
+            
+            return False
+        else:
+            self.root = self.insert(self.root, key, data)
+            self.size += 1
+            return True
+
+    def insert(self, subtree, key, data):
+        if subtree == None:
+            subtree = Node(key, data)
+        
+        elif key < subtree.key:
+            subtree.left = self.insert(subtree.left, key, data)
+        
+        elif key > subtree.key:
+            subtree.right = self.insert(subtree.right, key, data)
+        
+        return subtree
+
+        
 
 
 
-'''
-    
-    def search(self, target): 
-        return self._rec_search(target, self.root)
 
-    def rec_search(self, target, cur_node): #change to _rec_search first
-        # you will define
-        # find your base case first
-        # deal with cur_node being None first
-        return (target, cur_node)
-'''
+
+
+
+
+
+
+
+
+
+
+
+
+
