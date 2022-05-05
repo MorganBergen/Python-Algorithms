@@ -37,17 +37,43 @@ class Tree:
 		
 	def build(self):
 		self.root = Node(60, "60 root")
+		self.size += 1
 		self.root.left = Node(12, "60 root lc")
+		self.size += 1
 		self.root.right = Node(90, "60 root rc")
+		self.size += 1
 		self.root.left.left = Node(4, "12s lc")
+		self.size += 1
 		self.root.left.right = Node(41, "12s rc")
+		self.size += 1
 		self.root.left.left.left = Node(1, "4s lc")
+		self.size += 1
 		self.root.left.right.left = Node(29, "41s lc")
+		self.size += 1
 		self.root.left.right.left.left = (23, "29s lc")
+		self.size += 1
 		self.root.left.right.left.right = (37, "29s rc")
+		self.size += 1
 		self.root.right.left = Node(71, "90s lc")
+		self.size += 1
 		self.root.right.right = Node(84, "90s rc")
+		self.size += 1
 		self.root.right.right = Node(100, "90s rc")
+		self.size += 1
+	
+	# adds a new entry to the tree or replaces the value of an existing one
+	def add(self, key, data):
+		# find the ndoe containing the key, if it exists
+		node = self._search(self.root, key)
+		
+		#if the key is already in the tree, update its value
+		if node != None:
+			node.data = data
+			return False
+		
+		# otherwise add a new entry
+		
+		
 	
 	def _search(self, subtree, target_key):
 		
@@ -68,6 +94,8 @@ class Tree:
 		# returns a reference to the current node containing that key
 		else:
 			return subtree
+			
+	
 		
 	def _min(self, subtree):
 		if subtree == None:
