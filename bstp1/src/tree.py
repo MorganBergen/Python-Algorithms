@@ -35,45 +35,32 @@ class Tree:
 		else:
 			return (node.data)
 		
-	def build(self):
-		self.root = Node(60, "60 root")
-		self.size += 1
-		self.root.left = Node(12, "60 root lc")
-		self.size += 1
-		self.root.right = Node(90, "60 root rc")
-		self.size += 1
-		self.root.left.left = Node(4, "12s lc")
-		self.size += 1
-		self.root.left.right = Node(41, "12s rc")
-		self.size += 1
-		self.root.left.left.left = Node(1, "4s lc")
-		self.size += 1
-		self.root.left.right.left = Node(29, "41s lc")
-		self.size += 1
-		self.root.left.right.left.left = (23, "29s lc")
-		self.size += 1
-		self.root.left.right.left.right = (37, "29s rc")
-		self.size += 1
-		self.root.right.left = Node(71, "90s lc")
-		self.size += 1
-		self.root.right.right = Node(84, "90s rc")
-		self.size += 1
-		self.root.right.right = Node(100, "90s rc")
-		self.size += 1
 	
 	# adds a new entry to the tree or replaces the value of an existing one
 	def add(self, key, data):
 		# find the ndoe containing the key, if it exists
 		node = self._search(self.root, key)
 		
-		#if the key is already in the tree, update its value
+		#if the key is already in the tree, updates its value
 		if node != None:
 			node.data = data
 			return False
 		
 		# otherwise add a new entry
-		
-		
+		else:
+			self.root = self._insert(self.root, key, data)
+			self.size +=
+			return True
+			
+	
+	def _insert(self, subtree, key, data):
+		if subtree == None:
+			subtree = Node(key, data)
+		elif key < subtree.key:
+			subtree.left = self._insert(subtree.left, key, data)
+		elif key > subtree.key:
+			subtree.right = self._insert(subtree.right, key, data)
+		return subtree
 	
 	def _search(self, subtree, target_key):
 		
@@ -112,9 +99,37 @@ class Tree:
 			return subtree
 		else:
 			return (self._max(subtree.right))
+			
+	def build(self):
+		self.root = Node(60, "60 root")
+		self.size += 1
+		self.root.left = Node(12, "60 root lc")
+		self.size += 1
+		self.root.right = Node(90, "60 root rc")
+		self.size += 1
+		self.root.left.left = Node(4, "12s lc")
+		self.size += 1
+		self.root.left.right = Node(41, "12s rc")
+		self.size += 1
+		self.root.left.left.left = Node(1, "4s lc")
+		self.size += 1
+		self.root.left.right.left = Node(29, "41s lc")
+		self.size += 1
+		self.root.left.right.left.left = (23, "29s lc")
+		self.size += 1
+		self.root.left.right.left.right = (37, "29s rc")
+		self.size += 1
+		self.root.right.left = Node(71, "90s lc")
+		self.size += 1
+		self.root.right.right = Node(84, "90s rc")
+		self.size += 1
+		self.root.right.right = Node(100, "90s rc")
+		self.size += 1
+	
 
 
 '''
+
 
 
 	def inorder(subtree)
