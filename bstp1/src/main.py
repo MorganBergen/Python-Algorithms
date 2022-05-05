@@ -1,5 +1,6 @@
 
 
+from bisect import insort
 from tree import Tree
 
 
@@ -13,17 +14,20 @@ def main():
 	tree.add(4, "d")
 	tree.add(5, "e")
 	tree.add(6, "f")
-	
-	
 
+	try:
+		tree.add(1, "string")
+	except RuntimeError as e:
+		print(e)
+	
+	tree.inorderTrav(tree.root)
+	
 	
 
 
 if __name__ == "__main__":
 	main()
 	
-
-
 
 '''
 class Node:

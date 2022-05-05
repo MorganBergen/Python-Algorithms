@@ -18,25 +18,30 @@ class Tree:
             print(subtree.data)
             self.inorderTrav(subtree.right)
     
-    def search(self, subtree, target):
+    def locate(self, subtree, target):
+
         if subtree == None:
-            return None
+            return True
         
         elif target < subtree.key:
-            return self.search(subtree.left)
+            return self.locate(subtree.left, target)
         
         elif target > subtree.key:
-            return self.search(subtree.right)
-        
+            return self.locate(subtree.right, target)
+
         else:
-            return subtree
+            return False
 
     def add(self, key, data):
-        node = self.search(self.root, key)
+
+        if self.locate(self.root, key) == True:
+
+        else:
+            rasie RuntimeError
+        node = self.locate(self.root, key)
+        
         if node != None:
-            node = Node(key, data)
-            
-            return False
+            raise RuntimeError("cannot insert duplicate key value")
         else:
             self.root = self.insert(self.root, key, data)
             self.size += 1
