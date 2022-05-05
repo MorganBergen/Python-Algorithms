@@ -10,6 +10,7 @@ def main():
 	for i in range(100):
 		tree.add(i, i)
 
+	print(tree.root.data)
 
 	
 

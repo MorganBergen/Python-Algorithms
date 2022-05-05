@@ -1,4 +1,5 @@
 
+from typing_extensions import runtime
 from node import Node
 
 class Tree:
@@ -38,14 +39,14 @@ class Tree:
 	
 	# adds a new entry to the tree or replaces the value of an existing one
 	def add(self, key, data):
+	
 		# find the node containing the key, if it exists
 		node = self._search(self.root, key)
 		
 		#if the key is already in the tree, updates its value
-		if node == None:
-			node.data = data
-			return False
-		
+		if node == None and self.root == None:
+			self.root = Node(key, data)
+
 		# otherwise add a new entry
 		else:
 			self.root = self._insert(self.root, key, data)
@@ -90,7 +91,6 @@ class Tree:
 		# the target is contained in the current node
 		# returns a reference to the current node containing that key
 		else:
-			print(f"base case? {subtree.key}")
 			return subtree
 			
 	
