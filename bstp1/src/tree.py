@@ -1,6 +1,4 @@
 
-from typing_extensions import runtime
-from urllib.parse import _ResultMixinBytes
 from node import Node
 
 class Tree:
@@ -67,7 +65,11 @@ class Tree:
 		elif key > subtree.key:
 			subtree.right = self._insert(subtree.right, key, data)
 		return subtree
-	
+
+	def search(self, subtree, target_key):
+		if self.root == None:
+			return 
+
 	
 	def _search(self, subtree, target_key):
 		

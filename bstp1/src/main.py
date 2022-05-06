@@ -2,11 +2,20 @@
 from tree import Tree
 from node import Node
 
+
+def test_add():
+	return None
+
+def test_search():
+	return None
+
+def test_traversing():
+	return None
+
 def main():
 	
 	tree = Tree()
 	
-
 	tree.add(60, "a")
 	tree.add(25, "b")
 	tree.add(100, "c")
