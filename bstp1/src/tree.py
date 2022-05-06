@@ -1,5 +1,6 @@
 
 from typing_extensions import runtime
+from urllib.parse import _ResultMixinBytes
 from node import Node
 
 class Tree:
@@ -46,9 +47,10 @@ class Tree:
 		# find the node containing the key, if it exists
 		node = self._search(self.root, key)
 		
-		#if the key is already in the tree, updates its value
-		if node == None and self.root == None:
+		if node == None:
 			self.root = Node(key, data)
+		elif node == False:
+			raise RuntimeError("cannot insert duplicates")
 
 		# otherwise add a new entry
 		else:
@@ -67,13 +69,14 @@ class Tree:
 		return subtree
 	
 	
-	
-	
 	def _search(self, subtree, target_key):
 		
 		# base case for the root being none
 		if subtree == None:
 			return None
+		
+		elif subtree.key == target_key:
+			return False
 		
 		# target is left of the subtree root
 		elif target_key < subtree.key:
@@ -88,11 +91,6 @@ class Tree:
 				return subtree
 			else:
 				return self._search(subtree.right, target_key)
-				
-		
-		# base case
-		# the target is contained in the current node
-		# returns a reference to the current node containing that key
 		else:
 			return subtree
 			
