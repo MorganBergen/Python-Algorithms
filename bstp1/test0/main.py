@@ -20,8 +20,7 @@ def test():
 	tree.postorder(tree.root)
 
 def main():
-	object = Tree()
-	object.fileio("pokedex.txt")	
+	print("working")
 
 if __name__ == "__main__":
 	main()
