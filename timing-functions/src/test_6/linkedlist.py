@@ -19,17 +19,11 @@ class LinkedList:
 	@returns	None
 	'''
     def __init__(self):
-        self.head = None
+		self.head = None
         self.iterations_for_get = 0
         self.size = 0
 
-	'''
-	@pre		LinkedList() object must be allocated from a seperate module
-	@post
-	@param		None
-	@raises		None
-	@returns	None
-	'''
+
     def is_empty(self):
         return (self.head == None)
 
@@ -59,7 +53,6 @@ class LinkedList:
                 before = self.get_node_at(index - 1)
                 new_node.next = before.next
                 before.next = new_node
-
             self.size += 1
 
         else:

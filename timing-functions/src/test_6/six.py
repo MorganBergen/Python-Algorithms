@@ -9,7 +9,6 @@
             3.  step 1 and 2 will be repeated, increasing the size by 1,000 each time untill the linkedlist has pushed 100,000 times
 '''
 
-
 from linkedlist import LinkedList
 import time
 
@@ -17,8 +16,7 @@ class Six:
 
     '''
     @pre	    constructor must have been called
-    @post		member variables will have been initialized to their defaults
-                list will start as an empty linkedList
+    @post		member variables will have been initialized to their defaults list will start as an empty linkedList
                 time_sec, time_nanosec, and n will start as empty lists
     @param		None
     @raises		None
@@ -67,7 +65,7 @@ class Six:
             else:
                 print(f"{p_list.get_data(i)} -> ", end="")
     
-        end_time = time.process_time_ns()       
+        end_time = time.process_time_ns()
         print(f"total time in nano seconds: ", end_time-start_time)
         print(f"total time in seconds: ", self.nanosec_to_sec(end_time-start_time))
         self.time_nanosec.append(str(end_time-start_time))

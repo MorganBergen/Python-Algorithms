@@ -1,3 +1,4 @@
+unfinished code, must finish later
 eecs 268 lab08
 bst
 
