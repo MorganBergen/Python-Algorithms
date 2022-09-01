@@ -19,46 +19,30 @@ day n = ((n - 1) + (n - 2) + (n - 3)) people
 
 
 # HELLO IM GOING TO PUSH THIS NEW CHANGE
+# HELLO IM GOING TO PUSH THIS NEW CHANGE 2.0
 
 def main():
-	print("OUTBREAK!")
-	days = input("What day do you want a sick count for?: ")
-	if int(days) == 0:
-		print("Invalid day")
-	else:
-		print(f"Total people with flu: ", end="")
-		print(outbreak(int(days)))
-	
-	
+    print("OUTBREAK!")
+    days = input("What day do you want a sick count for?: ")
+    if int(days) == 0:
+        print("Invalid day")
+    else:
+        print(f"Total people with flu: ", end="")
+        print(outbreak(int(days)))
+
+
 def outbreak(days):
-	if days == 0: 	#base_case_0
-		return (0)
-	elif days == 1: #base_case_1
-		return (6)
-	elif days == 2: #base_case_2
-		return (20)
-	elif days == 3: #base_case_3
-		return (75)
-	else:
-		# recursive_case(recursive solution)
-		return outbreak(days - 1) + outbreak(days - 2) + outbreak(days - 3)
+    if days == 0:  # base_case_0
+        return (0)
+    elif days == 1:  # base_case_1
+        return (6)
+    elif days == 2:  # base_case_2
+        return (20)
+    elif days == 3:  # base_case_3
+        return (75)
+    else:
+        # recursive_case(recursive solution)
+        return outbreak(days - 1) + outbreak(days - 2) + outbreak(days - 3)
+
 
 main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
