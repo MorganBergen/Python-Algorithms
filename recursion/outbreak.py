@@ -17,6 +17,9 @@ day 4 = ((4 - 1) people + (4 - 2) people + (4 - 3) people)
 day n = ((n - 1) + (n - 2) + (n - 3)) people
 '''
 
+
+# HELLO IM GOING TO PUSH THIS NEW CHANGE
+
 def main():
 	print("OUTBREAK!")
 	days = input("What day do you want a sick count for?: ")

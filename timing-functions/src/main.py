@@ -99,12 +99,12 @@ def operationSix():
     test.generate_statistics("test_6/statistics.txt")
     
 def main():
-#    operationOne()
+   operationOne()
 #    operationTwo()
 #    operationThree()
 #    operationFour()
 #    operationFive()
-    operationSix()
+    # operationSix()
 
 
 if __name__ == "__main__":
