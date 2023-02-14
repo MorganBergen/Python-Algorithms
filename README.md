@@ -10,5 +10,4 @@ Learn along side with me! [Here](https://morganbergen.notion.site/morganbergen/p
 
 
 
-https://user-images.githubusercontent.com/65584733/180631469-efac7491-a8c7-498a-9332-f9ae6f726fec.mov
 
