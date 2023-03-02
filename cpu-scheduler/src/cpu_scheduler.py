@@ -74,10 +74,3 @@ class Cpu:
 						self.scheduler.dequeue()
 		
 		inFile.close()
-
-
-
-
-
-
-
