@@ -1,5 +1,7 @@
-In the following three programs I will time various methods from data structures we've made so far save those times plot them to see if they match the theoretical expectations
+programs time various methods from data structures we've made so far save those times plot them to see if they match the theoretical expectations
 In this we will be evaluating Big-O complexity
+
+$$O(1)$$, $$O(n)$$, $$O(nlog(n))$$, $$O(n!)$$
 
 ## `class Stack` `push()` 10000000 nodes
 <img src="./assets/operation1.png" width="400px">
