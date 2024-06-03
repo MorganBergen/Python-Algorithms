@@ -1,4 +1,4 @@
-# EECS 268 Python Data Structures
+# EECS 268
 
 Learn along side with me! [Here](https://morganbergen.notion.site/morganbergen/python-f43b4fe1e363455c8aabc99f9c400ee6)
 
